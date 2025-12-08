@@ -9,9 +9,16 @@ import UIKit
 
 class AnalysisTableViewCell3: UITableViewCell {
 
+    @IBOutlet weak var iconContainerView: UIView!
+    @IBOutlet weak var interestLabel: UILabel!
+    @IBOutlet weak var labelTopConstraint: NSLayoutConstraint!
+        @IBOutlet weak var labelBottomConstraint: NSLayoutConstraint!
     override func awakeFromNib() {
         super.awakeFromNib()
+        iconContainerView.layer.cornerRadius = 10
+        iconContainerView.clipsToBounds = true
         // Initialization code
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

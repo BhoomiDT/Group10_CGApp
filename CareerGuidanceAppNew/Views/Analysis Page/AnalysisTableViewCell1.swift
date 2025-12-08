@@ -15,6 +15,8 @@ class AnalysisTableViewCell1: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        domainName.text = "Web Development"
+        domainDescription.text = "Based on your psychometric test results, this is the best domain for you. "
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

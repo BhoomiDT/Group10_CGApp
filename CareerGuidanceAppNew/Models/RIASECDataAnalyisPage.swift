@@ -14,3 +14,5 @@ let riasecData: [RIASECEntry] = [
     RIASECEntry(label: "Enterprising", color: .riasecEnterprising, score: 0.70, type: "E"),
     RIASECEntry(label: "Conventional", color: .riasecConventional, score: 0.30, type: "C")
 ]
+
+let interests: [String] = ["Strong analytical and problem solving skills", "Interest in technology and innovation", "Alignment with logical and systematic thinking"]

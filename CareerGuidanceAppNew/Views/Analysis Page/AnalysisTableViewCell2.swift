@@ -11,6 +11,8 @@ class AnalysisTableViewCell2: UITableViewCell {
     @IBOutlet weak var labelCategory: UILabel!  // The RIASEC label (e.g., "Realistic")
         @IBOutlet weak var progressBar: UIProgressView! // The actual progress bar
         @IBOutlet weak var labelScore: UILabel!
+    @IBOutlet weak var labelTopConstraint: NSLayoutConstraint!
+        @IBOutlet weak var progressBottomConstraint: NSLayoutConstraint!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
