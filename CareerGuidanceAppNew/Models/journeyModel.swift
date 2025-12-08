@@ -26,7 +26,6 @@ enum JourneyData {
         JourneySection(
             title: "December",
             items: [
-
                 JourneyItem(
                     iconName: "paperplane.fill",
                     iconColor: UIColor(hex: "#1950A2") ?? .black,
@@ -54,9 +53,8 @@ enum JourneyData {
         ),
 
         JourneySection(
-            title: "January",
+            title: "November",
             items: [
-
                 JourneyItem(
                     iconName: "chevron.left.slash.chevron.right",
                     iconColor: UIColor(hex: "#A856F7") ?? .black,
@@ -79,6 +77,62 @@ enum JourneyData {
                     iconBackgroundColor: UIColor(hex: "#D8FDEB") ?? .clear,
                     title: "Completed Core JavaScript",
                     subtitle: "Part of Web Dev Roadmap"
+                )
+            ]
+        ),
+        JourneySection(
+            title: "October",
+            items: [
+                JourneyItem(
+                    iconName: "laptopcomputer",
+                    iconColor: UIColor(hex: "#0A84FF") ?? .black,
+                    iconBackgroundColor: UIColor(hex: "#E5F1FF") ?? .clear,
+                    title: "Started Frontend Journey",
+                    subtitle: "First step into development world"
+                ),
+
+                JourneyItem(
+                    iconName: "book.fill",
+                    iconColor: UIColor(hex: "#C46A12") ?? .black,
+                    iconBackgroundColor: UIColor(hex: "#FFEBD8") ?? .clear,
+                    title: "Completed Basics of Programming",
+                    subtitle: "Understanding logic & syntax"
+                ),
+
+                JourneyItem(
+                    iconName: "brain.head.profile",
+                    iconColor: UIColor(hex: "#B83F77") ?? .black,
+                    iconBackgroundColor: UIColor(hex: "#FFE3F0") ?? .clear,
+                    title: "Built Strong Learning Habit",
+                    subtitle: "Daily learning without distractions"
+                )
+            ]
+        ),
+        JourneySection(
+            title: "September",
+            items: [
+                JourneyItem(
+                    iconName: "sparkles",
+                    iconColor: UIColor(hex: "#9C47D4") ?? .black,
+                    iconBackgroundColor: UIColor(hex: "#F3E6FF") ?? .clear,
+                    title: "Kickstarted Self-Improvement",
+                    subtitle: "Mindset shift toward growth"
+                ),
+
+                JourneyItem(
+                    iconName: "calendar",
+                    iconColor: UIColor(hex: "#D49B33") ?? .black,
+                    iconBackgroundColor: UIColor(hex: "#FFF1D9") ?? .clear,
+                    title: "Routine & Discipline",
+                    subtitle: "Building daily study schedule"
+                ),
+
+                JourneyItem(
+                    iconName: "person.3.fill",
+                    iconColor: UIColor(hex: "#207355") ?? .black,
+                    iconBackgroundColor: UIColor(hex: "#CDF7E6") ?? .clear,
+                    title: "Joined Developer Community",
+                    subtitle: "First exposure to tech ecosystem"
                 )
             ]
         )
