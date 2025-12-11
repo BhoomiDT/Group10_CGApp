@@ -30,6 +30,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.rootViewController = initialVC
         self.window = window
         window.makeKeyAndVisible()
+
+
     }
 
 
