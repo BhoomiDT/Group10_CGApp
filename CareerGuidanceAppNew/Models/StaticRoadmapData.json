@@ -8,31 +8,37 @@
       "title": "HTML & CSS Basics",
       "subtitle": "Structure and style the web",
       "iconName": "building.columns",
-      "iconBackgroundColor": "systemBlue"
+      "iconColor": "#1950A2",
+      "iconBackgroundColor": "#E0ECFC"
     },
     {
       "title": "JavaScript Essentials",
       "subtitle": "Add logic and interactivity",
-      "iconName": "cube.box",
-      "iconBackgroundColor": "systemOrange"
+      "iconName": "shippingbox.fill",
+      "iconColor": "#D4A056",
+      "iconBackgroundColor": "#FAF3E7"
     },
     {
       "title": "Frontend Frameworks",
       "subtitle": "Build dynamic user interfaces",
-      "iconName": "star.circle",
-      "iconBackgroundColor": "systemGreen"
+      "iconName": "star",
+      "iconColor": "#D53A6A",
+      "iconBackgroundColor": "#FFD4DF"
     },
     {
       "title": "Backend Development",
       "subtitle": "Power your apps with servers",
-      "iconName": "person.3",
-      "iconBackgroundColor": "systemPurple"
+      "iconName": "xserve.raid",
+      "iconColor": "#A856F7",
+      "iconBackgroundColor": "#F6EFFE"
     },
     {
       "title": "APIs & Databases",
       "subtitle": "Connect data and services",
       "iconName": "cloud",
-      "iconBackgroundColor": "systemCyan"
+      "iconColor": "#E8771A",
+      "iconBackgroundColor": "#FFE7D4"
     }
   ]
 }
+

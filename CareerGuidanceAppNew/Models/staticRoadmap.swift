@@ -6,11 +6,13 @@
 //
 
 import Foundation
+import UIKit
 
 struct Milestone: Codable {
     let title: String
     let subtitle: String
     let iconName: String
+    let iconColor: String
     let iconBackgroundColor: String
 }
 

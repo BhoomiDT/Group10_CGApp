@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24412" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24405"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="section_header_cell" id="KGk-i7-Jjw" customClass="RoadmapSectionHeaderCell" customModule="CareerGuidanceAppNew" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="371" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="371" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M5k-Ce-YZK">
+                        <rect key="frame" x="16" y="16" width="0.0" height="26"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="HAx-Od-zHJ">
+                                <rect key="frame" x="0.0" y="0.66666666666666607" width="19.666666666666668" height="24.666666666666671"/>
+                                <color key="tintColor" red="0.12156862745098039" green="0.6470588235294118" blue="0.63137254901960782" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W5u-dz-fNB">
+                                <rect key="frame" x="-36.666666666666671" y="0.0" width="36.666666666666664" height="26"/>
+                                <color key="tintColor" red="0.12156862745098039" green="0.6470588235294118" blue="0.63137254901960782" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                <color key="textColor" red="0.12156862745098039" green="0.6470588235294118" blue="0.63137254901960782" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="tintColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="0.84705883264541626" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="W5u-dz-fNB" firstAttribute="leading" secondItem="HAx-Od-zHJ" secondAttribute="trailing" constant="30" id="U7a-A5-Yec"/>
+                            <constraint firstItem="W5u-dz-fNB" firstAttribute="leading" secondItem="M5k-Ce-YZK" secondAttribute="leading" constant="20" id="hE6-q6-I7N"/>
+                        </constraints>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="M5k-Ce-YZK" secondAttribute="bottom" constant="2" id="Lwn-cj-7vw"/>
+                    <constraint firstItem="M5k-Ce-YZK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="O6A-dL-sPm"/>
+                    <constraint firstItem="M5k-Ce-YZK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="l2c-Fo-bGh"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="cardContainerView" destination="H2p-sc-9uM" id="Bhy-rg-kZ2"/>
+                <outlet property="clockImageView" destination="HAx-Od-zHJ" id="9Wj-4l-lNb"/>
+                <outlet property="dueDateLabel" destination="W5u-dz-fNB" id="tvN-Me-NdF"/>
+            </connections>
+            <point key="canvasLocation" x="142.74809160305344" y="136.61971830985917"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="clock" catalog="system" width="128" height="123"/>
+    </resources>
+</document>

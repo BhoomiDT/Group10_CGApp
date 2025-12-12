@@ -9,32 +9,34 @@ import UIKit
 
 class MilestonesTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var iconBackgroundView: UIView!
-    @IBOutlet weak var iconImageView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var subtitleLabel: UILabel!
+        @IBOutlet weak var containerView: UIView!
+        @IBOutlet weak var iconBackgroundView: UIView!
+        @IBOutlet weak var iconImageView: UIImageView!
+        @IBOutlet weak var titleLabel: UILabel!
+        @IBOutlet weak var subtitleLabel: UILabel!
 
-    func configure(with milestone: Milestone) {
-        
-        titleLabel.text = milestone.title
-        subtitleLabel.text = milestone.subtitle
-        
-        iconImageView.image = UIImage(systemName: milestone.iconName)
-        
-        if let systemColor = UIColor(named: milestone.iconBackgroundColor) {
-             iconBackgroundView.backgroundColor = systemColor
-             iconImageView.tintColor = .white
-        } else {
-             iconBackgroundView.backgroundColor = .lightGray
-             iconImageView.tintColor = .darkGray
+        override func awakeFromNib() {
+            super.awakeFromNib()
+
+            // Rounded card
+            containerView.layer.cornerRadius = 16
+            containerView.clipsToBounds = true
+            selectionStyle = .none
+            iconBackgroundView.layer.cornerRadius = 8
+            iconBackgroundView.clipsToBounds = true
         }
-    }
+    override func setSelected(_ selected: Bool, animated: Bool) { }
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) { }
+    func configure(title: String,
+                       subtitle: String,
+                       iconName: String,
+                       iconColor: UIColor,
+                       bgColor: UIColor) {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        iconBackgroundView.layer.cornerRadius = 8
-        iconBackgroundView.clipsToBounds = true
-        
-        self.selectionStyle = .none
-    }
+            titleLabel.text = title
+            subtitleLabel.text = subtitle
+            iconImageView.image = UIImage(systemName: iconName)
+            iconImageView.tintColor = iconColor
+            iconBackgroundView.backgroundColor = bgColor
+        }
 }
