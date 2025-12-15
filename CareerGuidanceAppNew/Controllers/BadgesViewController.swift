@@ -96,7 +96,7 @@ class BadgesViewController: UIViewController, UICollectionViewDataSource, UIColl
         // Check if we are asking for a header
         if kind == UICollectionView.elementKindSectionHeader {
             
-            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionHeader", for: indexPath) as? SectionHeaderView else {
+            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionHeader", for: indexPath) as? BadgesSectionHeaderView else {
                 fatalError("Could not dequeue SectionHeaderView")
             }
             

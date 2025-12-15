@@ -7,12 +7,12 @@ struct RIASECEntry {
 }
 
 let riasecData: [RIASECEntry] = [
-    RIASECEntry(label: "Realistic", color: .riasecRealistic, score: 0.85, type: "R"),
-    RIASECEntry(label: "Investigative", color: .riasecInvestigative, score: 0.60, type: "I"),
-    RIASECEntry(label: "Artistic", color: .riasecArtistic, score: 0.45, type: "A"),
-    RIASECEntry(label: "Social", color: .riasecSocial, score: 0.92, type: "S"),
-    RIASECEntry(label: "Enterprising", color: .riasecEnterprising, score: 0.70, type: "E"),
-    RIASECEntry(label: "Conventional", color: .riasecConventional, score: 0.30, type: "C")
+    RIASECEntry(label: "Realistic", color: .riasecRealistic ?? .systemRed, score: 0.05, type: "R"),
+    RIASECEntry(label: "Investigative", color: .riasecInvestigative ?? .systemOrange, score: 0.60, type: "I"),
+    RIASECEntry(label: "Artistic", color: .riasecArtistic ?? .systemYellow, score: 0.78, type: "A"),
+    RIASECEntry(label: "Social", color: .riasecSocial ?? .systemGreen, score: 0.86, type: "S"),
+    RIASECEntry(label: "Enterprising", color: .riasecEnterprising ?? .systemBlue, score: 0.70, type: "E"),
+    RIASECEntry(label: "Conventional", color: .riasecConventional ?? .systemPurple, score: 0.30, type: "C")
 ]
 
 let interests: [String] = ["Strong analytical and problem solving skills", "Interest in technology and innovation", "Alignment with logical and systematic thinking"]

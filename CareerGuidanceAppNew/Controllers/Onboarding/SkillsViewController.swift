@@ -1,9 +1,3 @@
-//
-//  SkillsViewController.swift
-//  CareerGuidanceAppNew
-//
-//  Created by SDC-USER on 12/12/25.
-//
 import UIKit
 
 class SkillsViewController: UIViewController {
@@ -19,17 +13,9 @@ class SkillsViewController: UIViewController {
     ]
 
     private var suggestions: [String] = [
-        "NLP",
-        "Objective-C",
-        "PHP",
-        "PLSQL",
-        "PySpark",
-        "PyTorch",
-        "Python",
-        "React Native",
-        "SQL Database",
-        "Django",
-        "Kotlin"
+        "NLP", "Objective-C", "PHP", "PLSQL", "PySpark",
+        "PyTorch", "Python", "React Native", "SQL Database",
+        "Django", "Kotlin"
     ]
 
     private var filteredSuggestions: [String] = []
@@ -38,60 +24,87 @@ class SkillsViewController: UIViewController {
         return !t.isEmpty
     }
 
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupNavigationItems()
+        setupTableViewAndSearch()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+        
+        // Enable Large Titles (Title starts big on left, scrolls to center)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
+        
+        // OPTIONAL: If you want to prevent swiping back as well, uncomment this:
+        // navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+    }
+    
+    // MARK: - Setup UI
+    private func setupTableViewAndSearch() {
         tableView.dataSource = self
         tableView.delegate = self
         searchBar.delegate = self
         
-        // Register nibs if you created separate xib or rely on storyboard prototype cells (skip registration).
-        // tableView.register(UINib(nibName: "SelectedSkillCell", bundle: nil), forCellReuseIdentifier: "SelectedSkillCell")
-        // tableView.register(UINib(nibName: "SuggestionSkillCell", bundle: nil), forCellReuseIdentifier: "SuggestionSkillCell")
-
         tableView.estimatedRowHeight = 56
         tableView.rowHeight = UITableView.automaticDimension
         tableView.tableFooterView = UIView()
-        tableView.backgroundColor = UIColor(hex: "F2F2F7")
+        tableView.backgroundColor = UIColor(named: "systemGroupedBackground") ?? .systemGroupedBackground
         
         if #available(iOS 11.0, *) {
-                tableView.contentInsetAdjustmentBehavior = .automatic
-            }
+            tableView.contentInsetAdjustmentBehavior = .automatic
+        }
         if #available(iOS 15.0, *) {
-                tableView.sectionHeaderTopPadding = 0
-            }
+            tableView.sectionHeaderTopPadding = 0
+        }
 
-        // round floating search container and add shadow
+        // Search Container
         searchContainerView.layer.cornerRadius = 28
         searchContainerView.layer.masksToBounds = false
         searchContainerView.layer.shadowColor = UIColor.black.cgColor
         searchContainerView.layer.shadowOpacity = 0.06
         searchContainerView.layer.shadowOffset = CGSize(width: 0, height: 4)
         searchContainerView.layer.shadowRadius = 8
-        
-        // make container a shadow host only (no visible fill)
-            searchContainerView.backgroundColor = .clear
-            searchContainerView.layer.masksToBounds = false
-            searchContainerView.layer.shadowColor = UIColor.black.cgColor
-            searchContainerView.layer.shadowOpacity = 0.06
-            searchContainerView.layer.shadowOffset = CGSize(width: 0, height: 4)
-            searchContainerView.layer.shadowRadius = 8
+        searchContainerView.backgroundColor = .clear
 
-            // remove default search bar chrome so it doesn't draw that rectangle
-        searchBar.backgroundImage = UIImage()       // removes bar background
+        // Search Bar
+        searchBar.backgroundImage = UIImage()
         searchBar.barTintColor = .clear
         searchBar.backgroundColor = .clear
 
-        // ensure rows can scroll above the pill
         view.layoutIfNeeded()
         tableView.contentInset.bottom = searchContainerView.frame.height + 12
     }
+    
+    private func setupNavigationItems() {
+        self.title = "Technical Skills"
+        
+        // FIX: This line hides the chevron (System Back Button)
+        self.navigationItem.hidesBackButton = true
+        
+        // Done Button
+        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneTapped))
+        self.navigationItem.rightBarButtonItem = doneBtn
+    }
 
+    @objc func doneTapped() {
+        OnboardingManager.shared.saveTechSkills(self.selected)
+        
+        if let nextIntro = storyboard?.instantiateViewController(withIdentifier: "IntroVC") as? onboardingSectionIntroViewController {
+            nextIntro.sectionIndex = 2
+            navigationController?.pushViewController(nextIntro, animated: true)
+        }
+    }
+
+    // MARK: - Helpers
     private func suggestionsArray() -> [String] {
         return isFiltering ? filteredSuggestions : suggestions
     }
 
-    // helper to index path of a given cell's skill
     private func indexPath(forSelectedCell cell: SelectedSkillCell) -> IndexPath? {
         if let text = cell.titleLabel.text, let row = selected.firstIndex(of: text) {
             return IndexPath(row: row, section: 0)
@@ -108,9 +121,9 @@ class SkillsViewController: UIViewController {
     }
 }
 
-// MARK: - Data Source
+// MARK: - Extensions: DataSource
 extension SkillsViewController: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int { 2 } // Selected, Suggestions
+    func numberOfSections(in tableView: UITableView) -> Int { 2 }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return section == 0 ? selected.count : suggestionsArray().count
@@ -120,22 +133,19 @@ extension SkillsViewController: UITableViewDataSource {
         return section == 0 ? "Selected" : "Suggestions"
     }
 
-    func tableView(_ tableView: UITableView,
-                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "SelectedSkillCell", for: indexPath) as? SelectedSkillCell else {
-                fatalError("SelectedSkillCell not registered or wrong class")
+                return UITableViewCell()
             }
             cell.titleLabel.text = selected[indexPath.row]
             cell.delegate = self
-            // left button style done in cell awakeFromNib
             cell.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
             cell.backgroundColor = .systemBackground
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "SuggestionSkillCell", for: indexPath) as? SuggestionSkillCell else {
-                fatalError("SuggestionSkillCell not registered or wrong class")
+                return UITableViewCell()
             }
             cell.titleLabel.text = suggestionsArray()[indexPath.row]
             cell.delegate = self
@@ -146,11 +156,10 @@ extension SkillsViewController: UITableViewDataSource {
     }
 }
 
-// MARK: - Delegate: handle taps forwarded from cells
+// MARK: - Extensions: Delegate
 extension SkillsViewController: SelectedSkillCellDelegate, SuggestionSkillCellDelegate {
     func selectedCellDidTapRemove(_ cell: SelectedSkillCell) {
         guard let ip = indexPath(forSelectedCell: cell) else { return }
-        // move from selected -> suggestions (insert at top)
         let item = selected.remove(at: ip.row)
         suggestions.insert(item, at: 0)
 
@@ -164,14 +173,11 @@ extension SkillsViewController: SelectedSkillCellDelegate, SuggestionSkillCellDe
 
     func suggestionCellDidTapAdd(_ cell: SuggestionSkillCell) {
         guard let ip = indexPath(forSuggestionCell: cell) else { return }
-        // get item (from filtered or base)
         let item = suggestionsArray()[ip.row]
 
-        // remove from base suggestions (find real index)
         if let realIndex = suggestions.firstIndex(of: item) {
             suggestions.remove(at: realIndex)
         }
-        // add to selected top
         selected.insert(item, at: 0)
 
         tableView.beginUpdates()
@@ -183,13 +189,11 @@ extension SkillsViewController: SelectedSkillCellDelegate, SuggestionSkillCellDe
     }
 }
 
-// MARK: - UITableViewDelegate (optional taps)
+// MARK: - Extensions: TableView Selection
 extension SkillsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
-            // same as pressing remove
             let item = selected[indexPath.row]
-            // move
             selected.remove(at: indexPath.row)
             suggestions.insert(item, at: 0)
             tableView.beginUpdates()
@@ -198,7 +202,6 @@ extension SkillsViewController: UITableViewDelegate {
             tableView.endUpdates()
             if isFiltering { filterSuggestions(with: searchBar.text ?? "") }
         } else {
-            // add
             let item = suggestionsArray()[indexPath.row]
             if let real = suggestions.firstIndex(of: item) { suggestions.remove(at: real) }
             selected.insert(item, at: 0)
@@ -211,7 +214,7 @@ extension SkillsViewController: UITableViewDelegate {
     }
 }
 
-// MARK: - Search
+// MARK: - Extensions: Search
 extension SkillsViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filterSuggestions(with: searchText)

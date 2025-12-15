@@ -2,72 +2,86 @@ import UIKit
 
 class onboardingSectionIntroViewController: UIViewController {
 
-    // MARK: - Model
-    var questionnaire: Questionnaire!   // injected / created
-    var sectionIndex: Int = 0           // which section intro is this?
-
-    // MARK: - Outlets (hook these to storyboard)
-
-    @IBOutlet weak var iconImageView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel! 
-    @IBOutlet weak var subtitleLabel: UILabel!
-    @IBOutlet weak var continueButton: UIButton!
-    @IBOutlet weak var skipButton: UIButton!
-    
+    // MARK: - Outlets
     @IBOutlet weak var iconBackgroundView: UIView!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
+    @IBOutlet weak var btnContinue: UIButton!
+    @IBOutlet weak var btnSkip: UIButton!
+
+    // MARK: - Properties
+    var sectionIndex: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // First intro creates the model
-        if questionnaire == nil {
-            questionnaire = Questionnaire()
-        }
-
-        configureUI()
-        styleCircle()
-    }
-
-    private func configureUI() {
-        let section = questionnaire.sections[sectionIndex]
-        iconImageView.image = UIImage(systemName: section.symbolName)
-        titleLabel.text = section.title
-        subtitleLabel.text = section.subtitle
+        setupUI()
+        configureContent()
+        self.navigationItem.hidesBackButton = true
     }
     
-    private func styleCircle() {
-        iconBackgroundView.layer.cornerRadius = iconBackgroundView.bounds.height/2
-        iconBackgroundView.clipsToBounds = true
-    }
-
-    @IBAction func continueTapped(_ sender: UIButton) {
-        // Go to first question in this section
-        guard let vc = storyboard?.instantiateViewController(
-            withIdentifier: "QuestionVC"
-        ) as? onboardingQuestionViewController else { return }
-
-        vc.questionnaire = questionnaire
-        vc.sectionIndex = sectionIndex
-        vc.questionIndex = 0
-
-        navigationController?.pushViewController(vc, animated: true)
-    }
-
-    @IBAction func skipTapped(_ sender: UIButton) {
-        // Skip this section → next section intro
-        let nextSectionIndex = sectionIndex + 1
-
-        guard nextSectionIndex < questionnaire.sections.count,
-              let nextIntro = storyboard?.instantiateViewController(
-                withIdentifier: "IntroVC"
-              ) as? onboardingSectionIntroViewController else {
-
-            // no more sections → finish flow however you want
-            navigationController?.popToRootViewController(animated: true)
-            return
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        // 2. Make the Background View a Circle
+        if let bgView = iconBackgroundView {
+            bgView.layer.cornerRadius = bgView.frame.height / 2
+            bgView.clipsToBounds = true
         }
+       
+    }
+    
+    func setupUI() {
+        btnContinue.layer.cornerRadius = 12
+        btnContinue.clipsToBounds = true
+       
+    }
+    
+    func configureContent() {
+   
+        let sections = OnboardingManager.shared.questionnaire.sections
+        guard sectionIndex < sections.count else { return }
+        let sectionData = sections[sectionIndex]
+        
+        titleLabel.text = sectionData.title
+        subtitleLabel.text = sectionData.subtitle
+        
+        if let image = UIImage(systemName: sectionData.symbolName) {
+            imageView.image = image
+            imageView.tintColor = .appTeal        }
+        
+        btnSkip.isHidden = (sectionIndex == 0)
+    }
 
-        nextIntro.questionnaire = questionnaire
-        nextIntro.sectionIndex = nextSectionIndex
-        navigationController?.pushViewController(nextIntro, animated: true)
+    // MARK: - Navigation Logic
+    @IBAction func continueButtonTapped(_ sender: UIButton) {
+        if sectionIndex == 0 {
+            OnboardingManager.shared.markSectionCompleted(index: 0)
+            if let nextIntro = storyboard?.instantiateViewController(withIdentifier: "IntroVC") as? onboardingSectionIntroViewController {
+                nextIntro.sectionIndex = 1
+                navigationController?.pushViewController(nextIntro, animated: true)
+            }
+        }
+        else if sectionIndex == 1 {
+            if let techVC = storyboard?.instantiateViewController(withIdentifier: "technicalSkills") as? SkillsViewController {
+                navigationController?.pushViewController(techVC, animated: true)
+            }
+        }
+        else {
+            if let questionVC = storyboard?.instantiateViewController(withIdentifier: "QuestionVC") as? onboardingQuestionViewController {
+                questionVC.sectionIndex = self.sectionIndex
+                navigationController?.pushViewController(questionVC, animated: true)
+            }
+        }
+    }
+
+    @IBAction func skipButtonTapped(_ sender: UIButton) {
+        let homeStoryboard = UIStoryboard(name: "HomePageProfileNew", bundle: nil)
+        if let homeVC = homeStoryboard.instantiateViewController(withIdentifier: "HomePageViewController") as? HomePageViewController {
+            homeVC.shouldShowRoadmap = false
+            homeVC.shouldUpdateProgress = true
+            navigationController?.setViewControllers([homeVC], animated: true)
+        }
     }
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SectionHeaderView: UICollectionReusableView {
+class BadgesSectionHeaderView: UICollectionReusableView {
         
     @IBOutlet weak var titleLabel: UILabel!
     override func awakeFromNib() {
