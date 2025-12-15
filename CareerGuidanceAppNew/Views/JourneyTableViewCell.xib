@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24412" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24405"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="JourneyTableViewCell" id="KGk-i7-Jjw" customClass="JourneyTableViewCell" customModule="CareerGuidanceAppNew" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ols-mu-VCv" userLabel="cardView">
+                        <rect key="frame" x="16" y="4" width="288" height="112"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J5Q-0J-jgJ" userLabel="iconBackgroundView">
+                                <rect key="frame" x="16" y="36" width="40" height="40"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="21e-AJ-HVp">
+                                        <rect key="frame" x="10" y="10.666666666666664" width="20" height="19.333333333333336"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="geY-qG-Jvr"/>
+                                            <constraint firstAttribute="width" constant="20" id="x5q-Pd-7UR"/>
+                                        </constraints>
+                                        <imageReference key="image" image="paperplane.fill" catalog="system" renderingMode="template"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="Ppz-Hr-9qo"/>
+                                    <constraint firstItem="21e-AJ-HVp" firstAttribute="centerX" secondItem="J5Q-0J-jgJ" secondAttribute="centerX" id="T9k-FU-rY9"/>
+                                    <constraint firstItem="21e-AJ-HVp" firstAttribute="centerY" secondItem="J5Q-0J-jgJ" secondAttribute="centerY" id="WvQ-SD-eYu"/>
+                                    <constraint firstAttribute="height" constant="40" id="sRC-HX-6C4"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k0e-74-AIn">
+                                <rect key="frame" x="68" y="16" width="204" height="59"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iYU-Yf-h0Q">
+                                <rect key="frame" x="68" y="79" width="204" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="iYU-Yf-h0Q" firstAttribute="top" secondItem="k0e-74-AIn" secondAttribute="bottom" constant="4" id="58j-Ji-C45"/>
+                            <constraint firstAttribute="bottom" secondItem="iYU-Yf-h0Q" secondAttribute="bottom" constant="16" id="Kl9-Ps-kGP"/>
+                            <constraint firstItem="iYU-Yf-h0Q" firstAttribute="leading" secondItem="J5Q-0J-jgJ" secondAttribute="trailing" constant="12" id="NsL-3G-5Ur"/>
+                            <constraint firstItem="J5Q-0J-jgJ" firstAttribute="leading" secondItem="ols-mu-VCv" secondAttribute="leading" constant="16" id="WA3-pj-wZT"/>
+                            <constraint firstAttribute="trailing" secondItem="k0e-74-AIn" secondAttribute="trailing" constant="16" id="act-it-g5B"/>
+                            <constraint firstItem="k0e-74-AIn" firstAttribute="top" secondItem="ols-mu-VCv" secondAttribute="top" constant="16" id="jI2-L2-ddl"/>
+                            <constraint firstItem="k0e-74-AIn" firstAttribute="leading" secondItem="J5Q-0J-jgJ" secondAttribute="trailing" constant="12" id="lkP-F5-SzW"/>
+                            <constraint firstItem="J5Q-0J-jgJ" firstAttribute="centerY" secondItem="ols-mu-VCv" secondAttribute="centerY" id="sF7-Pr-cKh"/>
+                            <constraint firstAttribute="trailing" secondItem="iYU-Yf-h0Q" secondAttribute="trailing" constant="16" id="sxT-6q-F6Q"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="ols-mu-VCv" secondAttribute="trailing" constant="16" id="3MD-RP-7dy"/>
+                    <constraint firstItem="ols-mu-VCv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="eUZ-pe-Mjb"/>
+                    <constraint firstItem="ols-mu-VCv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="eXP-ML-xhr"/>
+                    <constraint firstAttribute="bottom" secondItem="ols-mu-VCv" secondAttribute="bottom" constant="4" id="fUg-GC-5Nj"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="cardView" destination="ols-mu-VCv" id="ZtH-wh-tCM"/>
+                <outlet property="iconBackgroundView" destination="J5Q-0J-jgJ" id="ccO-EN-eDM"/>
+                <outlet property="iconImageView" destination="21e-AJ-HVp" id="b1D-iK-1oh"/>
+                <outlet property="subtitleLabel" destination="iYU-Yf-h0Q" id="6l1-Bi-npr"/>
+                <outlet property="titleLabel" destination="k0e-74-AIn" id="Uvt-vx-Uwu"/>
+            </connections>
+            <point key="canvasLocation" x="-136" y="154"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="paperplane.fill" catalog="system" width="128" height="119"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
