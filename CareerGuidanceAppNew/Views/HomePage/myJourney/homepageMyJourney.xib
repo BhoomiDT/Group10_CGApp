@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="homepageMyJourney" id="gTV-IL-0wX" customClass="homepageMyJourney" customModule="HomePage" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="homepageMyJourney" id="gTV-IL-0wX" customClass="homepageMyJourney" customModule="CareerGuidanceAppNew" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="360" height="251"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -197,6 +197,7 @@
             </constraints>
             <size key="customSize" width="242" height="251"/>
             <connections>
+                <outlet property="chevronImageView" destination="fMf-aV-WCn" id="18I-ab-Fnq"/>
                 <outlet property="overviewIcon" destination="6RZ-Vx-vY3" id="K4c-S1-hkN"/>
                 <outlet property="overviewLabel" destination="6mR-Z6-EbZ" id="eoE-9a-PZU"/>
                 <outlet property="row1ImageView" destination="r92-lu-H2l" id="sou-nB-J6S"/>

@@ -35,13 +35,6 @@ class SkillsViewController: UIViewController {
         super.viewWillAppear(animated)
         
         navigationController?.setNavigationBarHidden(false, animated: animated)
-        
-        // Enable Large Titles (Title starts big on left, scrolls to center)
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.largeTitleDisplayMode = .always
-        
-        // OPTIONAL: If you want to prevent swiping back as well, uncomment this:
-        // navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
     
     // MARK: - Setup UI
@@ -62,16 +55,11 @@ class SkillsViewController: UIViewController {
             tableView.sectionHeaderTopPadding = 0
         }
 
-        // Search Container
+//        // Search Container
         searchContainerView.layer.cornerRadius = 28
-        searchContainerView.layer.masksToBounds = false
-        searchContainerView.layer.shadowColor = UIColor.black.cgColor
-        searchContainerView.layer.shadowOpacity = 0.06
-        searchContainerView.layer.shadowOffset = CGSize(width: 0, height: 4)
-        searchContainerView.layer.shadowRadius = 8
-        searchContainerView.backgroundColor = .clear
-
-        // Search Bar
+       searchContainerView.backgroundColor = .clear
+//
+//        // Search Bar
         searchBar.backgroundImage = UIImage()
         searchBar.barTintColor = .clear
         searchBar.backgroundColor = .clear
@@ -88,6 +76,7 @@ class SkillsViewController: UIViewController {
         
         // Done Button
         let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneTapped))
+        doneBtn.tintColor = UIColor(hex: "1fa5a1")
         self.navigationItem.rightBarButtonItem = doneBtn
     }
 
@@ -141,7 +130,6 @@ extension SkillsViewController: UITableViewDataSource {
             cell.titleLabel.text = selected[indexPath.row]
             cell.delegate = self
             cell.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
-            cell.backgroundColor = .systemBackground
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "SuggestionSkillCell", for: indexPath) as? SuggestionSkillCell else {
@@ -150,7 +138,6 @@ extension SkillsViewController: UITableViewDataSource {
             cell.titleLabel.text = suggestionsArray()[indexPath.row]
             cell.delegate = self
             cell.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
-            cell.backgroundColor = .systemBackground
             return cell
         }
     }

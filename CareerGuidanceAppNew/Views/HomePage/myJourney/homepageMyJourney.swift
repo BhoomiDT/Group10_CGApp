@@ -13,17 +13,34 @@ class homepageMyJourney: UICollectionViewCell {
     @IBOutlet weak var row2ValueLabel: UILabel!
     @IBOutlet weak var row3ValueLabel: UILabel!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        self.backgroundColor = .white
-        self.layer.cornerRadius = 16
-        self.layer.masksToBounds = true
-        setupIcons()
-        
-        overviewLabel.textColor = .appTeal
-    }
+    @IBOutlet weak var chevronImageView: UIButton!
+    var onChevronTapped: (() -> Void)?
 
-    
+        override func awakeFromNib() {
+            super.awakeFromNib()
+            self.backgroundColor = .white
+            self.layer.cornerRadius = 16
+            self.layer.masksToBounds = true
+            setupIcons()
+            
+            overviewLabel.textColor = .appTeal
+            
+            // 3. SETUP TAP GESTURE
+            setupChevronInteraction()
+        }
+        
+        private func setupChevronInteraction() {
+            // Enable interaction on the image view
+            chevronImageView.isUserInteractionEnabled = true
+            
+            // Create the gesture
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleChevronTap))
+            chevronImageView.addGestureRecognizer(tapGesture)
+        }
+    @objc private func handleChevronTap() {
+            // Trigger the closure when tapped
+            onChevronTapped?()
+        }
     func configure(days: String, quizzes: String, quests: String) {
        
         let isComplete = OnboardingManager.shared.isOnboardingFullyComplete()

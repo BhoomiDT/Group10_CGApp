@@ -79,8 +79,6 @@ class onboardingSectionIntroViewController: UIViewController {
     @IBAction func skipButtonTapped(_ sender: UIButton) {
         let homeStoryboard = UIStoryboard(name: "HomePageProfileNew", bundle: nil)
         if let homeVC = homeStoryboard.instantiateViewController(withIdentifier: "HomePageViewController") as? HomePageViewController {
-            homeVC.shouldShowRoadmap = false
-            homeVC.shouldUpdateProgress = true
             navigationController?.setViewControllers([homeVC], animated: true)
         }
     }

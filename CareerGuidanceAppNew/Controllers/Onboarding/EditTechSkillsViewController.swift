@@ -93,9 +93,7 @@ class EditTechSkillsViewController: UIViewController {
         // Navigate to Home Page WITHOUT Roadmap, but WITH Progress update
         if let homeVC = storyboard?.instantiateViewController(withIdentifier: "HomePageViewController") as? HomePageViewController {
             
-            homeVC.shouldShowRoadmap = false
-            homeVC.shouldUpdateProgress = true
-            
+           
             // Set as root to prevent going back
             navigationController?.setViewControllers([homeVC], animated: true)
         }

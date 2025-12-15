@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="showLeaderboard" id="gTV-IL-0wX" userLabel="showLeaderboard" customClass="showLeaderboard" customModule="HomePage" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="showLeaderboard" id="gTV-IL-0wX" userLabel="showLeaderboard" customClass="showLeaderboard" customModule="CareerGuidanceAppNew" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -42,6 +42,9 @@
                                     <color key="baseForegroundColor" systemColor="systemGrayColor"/>
                                     <color key="baseBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="leaderboardact:" destination="gTV-IL-0wX" eventType="touchUpInside" id="0V8-Yt-Cb0"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -68,6 +71,7 @@
             </constraints>
             <size key="customSize" width="261" height="44"/>
             <connections>
+                <outlet property="leaderboardChevron" destination="yKj-qT-O3D" id="otJ-aC-FzU"/>
                 <outlet property="leaderboardIcon" destination="PzC-6r-zvN" id="7QS-IX-5Os"/>
             </connections>
             <point key="canvasLocation" x="171" y="139"/>
