@@ -14,30 +14,34 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        setupTableView()
+        setupCloseButton()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        profileImage.layer.cornerRadius = profileImage.frame.height / 2
-        profileImage.layer.masksToBounds = true
+   
+    private func setupCloseButton() {
+        let closeButton = UIButton(type: .close)
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
+        closeButton.addTarget(self, action: #selector(closeButtonTapped(_:)), for: .touchUpInside)
+        view.addSubview(closeButton)
+        
+        NSLayoutConstraint.activate([
+        
+            closeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            closeButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20)
+        ])
+    }
+    
+    @IBAction func closeButtonTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
 
     private func setupUI() {
         view.backgroundColor = .systemGroupedBackground
-        viewForIcon.backgroundColor = .systemGroupedBackground
+        
         nameLabel.text = user.name
         emailLabel.text = user.email
         let config = UIImage.SymbolConfiguration(pointSize: 40, weight: .regular)
         profileImage.image = UIImage(systemName: user.imageName, withConfiguration: config)
-        profileImage.tintColor = .systemGray3
-        profileImage.contentMode = .scaleAspectFill
-    }
-    
-    private func setupTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.backgroundColor = .clear
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -58,8 +62,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.textLabel?.text = title
         cell.textLabel?.font = .systemFont(ofSize: 16)
         
-        if title == "Logout" {
+        if title == "Log Out" {
             cell.textLabel?.textColor = .systemRed
+            cell.backgroundColor = .white
             cell.textLabel?.textAlignment = .center
             cell.accessoryType = .none
         } else {
@@ -72,7 +77,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if sections[indexPath.section].options[indexPath.row] == "Logout" {
+        if sections[indexPath.section].options[indexPath.row] == "Log Out" {
             print("Logout Tapped")
         }
     }

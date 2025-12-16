@@ -27,7 +27,7 @@ class SkillsViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigationItems()
+        
         setupTableViewAndSearch()
     }
     
@@ -35,6 +35,7 @@ class SkillsViewController: UIViewController {
         super.viewWillAppear(animated)
         
         navigationController?.setNavigationBarHidden(false, animated: animated)
+        setupNavigationItems()
     }
     
     // MARK: - Setup UI

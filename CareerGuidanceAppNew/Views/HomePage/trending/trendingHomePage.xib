@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="trendingHomePage" id="gTV-IL-0wX" customClass="trendingHomePage" customModule="HomePage" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="trendingHomePage" id="gTV-IL-0wX" customClass="trendingHomePage" customModule="CareerGuidanceAppNew" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="238"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -39,7 +39,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Rmm-y0-aCq" firstAttribute="top" secondItem="voa-n2-05L" secondAttribute="bottom" constant="10" id="471-mU-Tj8"/>
                             <constraint firstItem="OOg-Z4-7CF" firstAttribute="top" secondItem="fbf-55-QVG" secondAttribute="top" constant="8" id="6l8-b8-fqc"/>
@@ -51,6 +51,12 @@
                             <constraint firstAttribute="trailing" secondItem="voa-n2-05L" secondAttribute="trailing" constant="20" id="XEZ-56-S0S"/>
                             <constraint firstAttribute="trailing" secondItem="OOg-Z4-7CF" secondAttribute="trailing" constant="10" id="utY-qN-HEz"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <integer key="value" value="16"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="maskstobounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
             </view>
@@ -71,9 +77,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

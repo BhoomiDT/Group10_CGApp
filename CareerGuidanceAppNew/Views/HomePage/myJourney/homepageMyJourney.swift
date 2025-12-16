@@ -18,27 +18,24 @@ class homepageMyJourney: UICollectionViewCell {
 
         override func awakeFromNib() {
             super.awakeFromNib()
-            self.backgroundColor = .white
-            self.layer.cornerRadius = 16
-            self.layer.masksToBounds = true
-            setupIcons()
+            
+//            setupIcons()
             
             overviewLabel.textColor = .appTeal
             
-            // 3. SETUP TAP GESTURE
+           
             setupChevronInteraction()
         }
         
         private func setupChevronInteraction() {
-            // Enable interaction on the image view
+          
             chevronImageView.isUserInteractionEnabled = true
             
-            // Create the gesture
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleChevronTap))
             chevronImageView.addGestureRecognizer(tapGesture)
         }
     @objc private func handleChevronTap() {
-            // Trigger the closure when tapped
+            
             onChevronTapped?()
         }
     func configure(days: String, quizzes: String, quests: String) {
@@ -55,37 +52,13 @@ class homepageMyJourney: UICollectionViewCell {
     }
 
     
-    private func setupIcons() {
-        let headerConfig = UIImage.SymbolConfiguration(pointSize: 18, weight: .medium)
-        overviewIcon.image = UIImage(systemName: "clock", withConfiguration: headerConfig)
-        overviewIcon.tintColor = .appTeal
-        overviewIcon.contentMode = .scaleAspectFit
-
-        configureIcon(
-            imageView: row1ImageView,
-            symbolName: "calendar",
-            color: .systemBlue
-        )
-        
-        configureIcon(
-            imageView: row2ImageView,
-            symbolName: "target",
-            color: .systemGreen
-        )
-        
-        configureIcon(
-            imageView: row3ImageView,
-            symbolName: "trophy.fill",
-            color: .systemOrange
-        )
-    }
+//    private func setupIcons() {
+//        let headerConfig = UIImage.SymbolConfiguration(pointSize: 18, weight: .medium)
+//        
+//    }
 
     private func configureIcon(imageView: UIImageView, symbolName: String, color: UIColor) {
-        let config = UIImage.SymbolConfiguration(pointSize: 20, weight: .semibold)
-        imageView.image = UIImage(systemName: symbolName, withConfiguration: config)
-        
-        imageView.tintColor = color
-        imageView.backgroundColor = color.withAlphaComponent(0.15)
+//        let config = UIImage.SymbolConfiguration(pointSize: 20, weight: .semibold)
         
         imageView.layer.cornerRadius = imageView.frame.height / 2
         imageView.clipsToBounds = true
@@ -94,8 +67,5 @@ class homepageMyJourney: UICollectionViewCell {
     
     private func setupValue(label: UILabel, value: String) {
         label.text = value
-        // Match the bold style from your design
-        label.font = .systemFont(ofSize: 17, weight: .bold)
-        label.textColor = .black
     }
 }

@@ -60,3 +60,46 @@ extension UIColor {
     // Conventional (C) - 0C4FAB (Dark Blue/Indigo)
     static let riasecConventional = UIColor(hex: "0C4FAB")
 }
+import UIKit
+
+extension UIView {
+    // This allows you to set the border color directly in Storyboard
+    @IBInspectable var borderColor: UIColor? {
+        get {
+            guard let cgColor = layer.borderColor else { return nil }
+            return UIColor(cgColor: cgColor)
+        }
+        set {
+            layer.borderColor = newValue?.cgColor
+        }
+    }
+    
+    @IBInspectable var borderWidth: CGFloat {
+        get {
+            return layer.borderWidth
+        }
+        set {
+            layer.borderWidth = newValue
+        }
+    }
+}
+import UIKit
+
+extension UIView {
+    // ... your previous extensions ...
+
+    // Add this new one:
+    @IBInspectable var flipVertical: Bool {
+        get {
+            return transform.d == -1
+        }
+        set {
+            if newValue {
+                // Flips the view upside down (standard chat app behavior)
+                transform = CGAffineTransform(scaleX: 1, y: -1)
+            } else {
+                transform = .identity
+            }
+        }
+    }
+}

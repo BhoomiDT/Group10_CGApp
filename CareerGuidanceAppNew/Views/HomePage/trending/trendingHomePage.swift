@@ -17,10 +17,10 @@ class trendingHomePage: UICollectionViewCell {
         super.awakeFromNib()
         
         
-        self.backgroundColor = .white
-        self.layer.cornerRadius = 16
-        self.layer.masksToBounds = true
-        
+//        self.backgroundColor = .white
+//        self.layer.cornerRadius = 16
+//        self.layer.masksToBounds = true
+//        
      
        
         

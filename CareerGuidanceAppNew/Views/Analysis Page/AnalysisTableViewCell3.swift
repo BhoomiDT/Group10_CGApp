@@ -15,16 +15,12 @@ class AnalysisTableViewCell3: UITableViewCell {
         @IBOutlet weak var labelBottomConstraint: NSLayoutConstraint!
     override func awakeFromNib() {
         super.awakeFromNib()
-        iconContainerView.layer.cornerRadius = 10
-        iconContainerView.clipsToBounds = true
-        // Initialization code
         
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
     
 }

@@ -35,15 +35,15 @@ class roadmapScrollCollectionViewCell: UICollectionViewCell {
     // MARK: - Setup
     func setupCardStyle() {
         self.backgroundColor = .clear
-        self.layer.shadowColor = UIColor.black.withAlphaComponent(0.1).cgColor
-        self.layer.shadowOffset = CGSize(width: 0, height: 4)
-        self.layer.shadowRadius = 8
-        self.layer.shadowOpacity = 0.2
-        self.layer.masksToBounds = false
-        
-        self.layer.cornerRadius = 20
-        self.contentView.layer.cornerRadius = 20
-        self.contentView.layer.masksToBounds = true
+//        self.layer.shadowColor = UIColor.black.withAlphaComponent(0.1).cgColor
+//        self.layer.shadowOffset = CGSize(width: 0, height: 4)
+//        self.layer.shadowRadius = 8
+//        self.layer.shadowOpacity = 0.2
+//        self.layer.masksToBounds = false
+//        
+//        self.layer.cornerRadius = 20
+//        self.contentView.layer.cornerRadius = 20
+//        self.contentView.layer.masksToBounds = true
     }
 
     func configure(title: String, subtitle: String, percentage: Int, milestone: String) {

@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="roadmapScrollCollectionViewCell" id="gTV-IL-0wX" customClass="roadmapScrollCollectionViewCell" customModule="HomePage" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="roadmapScrollCollectionViewCell" id="gTV-IL-0wX" customClass="roadmapScrollCollectionViewCell" customModule="CareerGuidanceAppNew" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="360" height="184"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -95,15 +95,27 @@
                                     <constraint firstItem="9tf-Qy-7tR" firstAttribute="leading" secondItem="HQi-2X-Kth" secondAttribute="trailing" id="sBN-PK-Kf3"/>
                                     <constraint firstItem="zc7-V7-cbU" firstAttribute="leading" secondItem="sja-e0-bBm" secondAttribute="leading" constant="20" id="wPU-jp-RFv"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="contentView.layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="contentView.layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="sja-e0-bBm" secondAttribute="bottom" id="FBw-Ds-2GC"/>
                             <constraint firstAttribute="trailing" secondItem="sja-e0-bBm" secondAttribute="trailing" id="Ixe-ow-OFe"/>
                             <constraint firstItem="sja-e0-bBm" firstAttribute="leading" secondItem="wCq-d7-rFf" secondAttribute="leading" id="fRH-eD-3Rc"/>
                             <constraint firstItem="sja-e0-bBm" firstAttribute="top" secondItem="wCq-d7-rFf" secondAttribute="top" id="iYx-6k-yq2"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="NO"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
             </view>

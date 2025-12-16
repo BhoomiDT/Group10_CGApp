@@ -39,6 +39,12 @@
                                     <constraint firstAttribute="height" constant="44" id="rSs-oU-QiB"/>
                                     <constraint firstItem="SAW-zx-IOC" firstAttribute="centerX" secondItem="ZRw-ry-3PV" secondAttribute="centerX" id="wRy-Zv-Ghu"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ykf-Sf-jsr">
                                 <rect key="frame" x="72" y="8" width="220" height="54"/>

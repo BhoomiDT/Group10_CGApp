@@ -15,31 +15,20 @@ class onboardingSectionIntroViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
         configureContent()
         self.navigationItem.hidesBackButton = true
     }
     
-    
+    // MARK: - UI Layout Fix
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        // 2. Make the Background View a Circle
-        if let bgView = iconBackgroundView {
-            bgView.layer.cornerRadius = bgView.frame.height / 2
-            bgView.clipsToBounds = true
-        }
        
-    }
-    
-    func setupUI() {
-        btnContinue.layer.cornerRadius = 12
-        btnContinue.clipsToBounds = true
-       
+        iconBackgroundView.layer.cornerRadius = iconBackgroundView.frame.height / 2
+        iconBackgroundView.layer.masksToBounds = true
     }
     
     func configureContent() {
-   
         let sections = OnboardingManager.shared.questionnaire.sections
         guard sectionIndex < sections.count else { return }
         let sectionData = sections[sectionIndex]
@@ -49,7 +38,8 @@ class onboardingSectionIntroViewController: UIViewController {
         
         if let image = UIImage(systemName: sectionData.symbolName) {
             imageView.image = image
-            imageView.tintColor = .appTeal        }
+            imageView.tintColor = .appTeal
+        }
         
         btnSkip.isHidden = (sectionIndex == 0)
     }
@@ -78,6 +68,7 @@ class onboardingSectionIntroViewController: UIViewController {
 
     @IBAction func skipButtonTapped(_ sender: UIButton) {
         let homeStoryboard = UIStoryboard(name: "HomePageProfileNew", bundle: nil)
+        
         if let homeVC = homeStoryboard.instantiateViewController(withIdentifier: "HomePageViewController") as? HomePageViewController {
             navigationController?.setViewControllers([homeVC], animated: true)
         }

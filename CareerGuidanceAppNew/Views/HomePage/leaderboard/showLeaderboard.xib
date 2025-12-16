@@ -21,12 +21,14 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hUe-Ch-Dpb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PzC-6r-zvN">
-                                <rect key="frame" x="20" y="10" width="40" height="40"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chart.bar.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="PzC-6r-zvN">
+                                <rect key="frame" x="20" y="12.666666666666668" width="40" height="34.333333333333329"/>
+                                <color key="tintColor" red="0.6588235294117647" green="0.33725490196078434" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="EuQ-jn-Pju"/>
                                     <constraint firstAttribute="height" constant="40" id="Rq1-ri-w81"/>
                                 </constraints>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small" weight="semibold"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Leaderboard" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yfj-3K-zER">
                                 <rect key="frame" x="75" y="10" width="235" height="40"/>
@@ -47,7 +49,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="yfj-3K-zER" firstAttribute="centerY" secondItem="hUe-Ch-Dpb" secondAttribute="centerY" id="0Nd-Aw-YF8"/>
                             <constraint firstItem="yfj-3K-zER" firstAttribute="top" secondItem="hUe-Ch-Dpb" secondAttribute="top" constant="10" id="0cJ-OT-EQP"/>
@@ -59,6 +61,12 @@
                             <constraint firstAttribute="bottom" secondItem="yfj-3K-zER" secondAttribute="bottom" constant="10" id="pAp-rb-fEO"/>
                             <constraint firstItem="PzC-6r-zvN" firstAttribute="leading" secondItem="hUe-Ch-Dpb" secondAttribute="leading" constant="20" id="xMS-r5-vII"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
             </view>
@@ -78,10 +86,8 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="chart.bar.fill" catalog="system" width="128" height="90"/>
         <image name="chevron.right" catalog="system" width="97" height="128"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

@@ -4,9 +4,8 @@ class onboardingQuestionViewController: UIViewController {
 
     var questionnaire: Questionnaire!
     var sectionIndex: Int = 0
-    var questionIndex: Int = 0       
-
-    // MARK: - Outlets
+    var questionIndex: Int = 0
+    
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
 
@@ -19,91 +18,98 @@ class onboardingQuestionViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var progressView: UIProgressView!
 
-    // MARK: - Lifecycle
+    private var allOptionButtons: [UIButton] = []
+    
+    // We still need this for the selection logic
+    private let themeColor = UIColor(hex: "1fa5a1")
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI()
         setupNavigation()
-        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-
+        configureUI()
+        restoreState()
     }
     
-    
-   
-    
-    // MARK: - 1. Back Button Logic (Safety Check)
     private func setupNavigation() {
-        // If this is the FIRST question of the section, replace the back button
+        navigationItem.largeTitleDisplayMode = .never
         if questionIndex == 0 {
             navigationItem.hidesBackButton = true
-            let backBtn = UIBarButtonItem(image: UIImage(systemName: "chevron.left"),
-                                          style: .plain,
-                                          target: self,
-                                          action: #selector(backTapped))
+            let backBtn = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(backTapped))
             navigationItem.leftBarButtonItem = backBtn
         }
     }
 
     @objc func backTapped() {
-        let alert = UIAlertController(title: "Exit Section?",
-                                      message: "If you go back now, your progress for this section will be lost.",
-                                      preferredStyle: .alert)
-        
-        let exitAction = UIAlertAction(title: "Exit", style: .destructive) { _ in
-            self.navigationController?.popViewController(animated: true)
-        }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        
-        alert.addAction(exitAction)
-        alert.addAction(cancelAction)
+        let alert = UIAlertController(title: "Exit Section?", message: "Progress for this section will be lost.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Exit", style: .destructive) { _ in self.navigationController?.popViewController(animated: true) })
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         present(alert, animated: true)
     }
 
-    // MARK: - UI Configuration
     private func configureUI() {
-        if questionnaire == nil {
-            questionnaire = OnboardingManager.shared.questionnaire
-        }
+        if questionnaire == nil { questionnaire = OnboardingManager.shared.questionnaire }
         
         let section = questionnaire.sections[sectionIndex]
         let question = section.questions[questionIndex]
 
-        subtitleLabel.text = String("Question \(questionIndex+1)")
-        questionLabel.text = String(question.qText)
+        subtitleLabel.text = "Question \(questionIndex + 1)"
+        questionLabel.text = question.qText
 
         let options = question.options
-        let buttons = [optionButton1, optionButton2, optionButton3, optionButton4, optionButton5]
+        allOptionButtons = [optionButton1, optionButton2, optionButton3, optionButton4, optionButton5]
 
-        for i in 0..<buttons.count {
-            if i < options.count {
-                buttons[i]?.setTitle(options[i], for: .normal)
-                buttons[i]?.isHidden = false
+        // Only logic here: Setting text and visibility.
+        // Styling (corner radius, etc.) is now handled by Storyboard.
+        for (index, button) in allOptionButtons.enumerated() {
+            if index < options.count {
+                button.setTitle(options[index], for: .normal)
+                button.isHidden = false
+                
+                // Ensure state is reset for recycled views or fresh load
+                button.layer.borderWidth = 0
+                button.backgroundColor = .white
             } else {
-                buttons[i]?.isHidden = true
+                button.isHidden = true
             }
         }
 
-        // Logic: Is this the last question of the CURRENT section?
-        let isLastQuestionInCurrentSection = questionIndex == section.questions.count - 1
-        
-        // Requirement: "Section wise last button should be Submit"
-        nextButton.setTitle(isLastQuestionInCurrentSection ? "Submit" : "Next", for: .normal)
+        let isLast = questionIndex == section.questions.count - 1
+        nextButton.setTitle(isLast ? "Submit" : "Next", for: .normal)
 
-        // Progress bar update
-        let totalQuestions = section.questions.count
-        let current = questionIndex + 1
-        let progress = Float(current) / Float(totalQuestions)
+        let progress = Float(questionIndex + 1) / Float(section.questions.count)
         progressView.setProgress(progress, animated: true)
     }
 
-    // MARK: - Actions
+    private func restoreState() {
+        if let saved = AnswerStorage.shared.getSavedOption(section: sectionIndex, question: questionIndex) {
+            updateButtonSelection(selectedIndex: saved)
+        }
+    }
+
+    @IBAction func optionTapped(_ sender: UIButton) {
+        guard let index = allOptionButtons.firstIndex(of: sender) else { return }
+        
+        AnswerStorage.shared.save(section: sectionIndex, question: questionIndex, optionIndex: index)
+        updateButtonSelection(selectedIndex: index)
+    }
+
+    private func updateButtonSelection(selectedIndex: Int) {
+        for (index, button) in allOptionButtons.enumerated() {
+            if index == selectedIndex {
+                // We set the border color dynamically here because it depends on selection
+                button.layer.borderColor = themeColor.cgColor
+                button.layer.borderWidth = 2
+                button.backgroundColor = themeColor.withAlphaComponent(0.1)
+            } else {
+                button.layer.borderWidth = 0
+                button.backgroundColor = .white
+            }
+        }
+    }
 
     @IBAction func nextTapped(_ sender: UIButton) {
         let section = questionnaire.sections[sectionIndex]
-        
-        // 1. Check if there are MORE questions in this section
         if questionIndex + 1 < section.questions.count {
-            // Simply go to the next question (No Alert needed for "Next")
             if let vc = storyboard?.instantiateViewController(withIdentifier: "QuestionVC") as? onboardingQuestionViewController {
                 vc.questionnaire = questionnaire
                 vc.sectionIndex = sectionIndex
@@ -111,49 +117,33 @@ class onboardingQuestionViewController: UIViewController {
                 navigationController?.pushViewController(vc, animated: true)
             }
         } else {
-            // 2. This is the LAST question of the section (Button is "Submit")
-            // Requirement: "if section submit then too the alert shall come up"
             showSectionSubmitAlert()
         }
     }
     
-    // MARK: - 2. Submit Alert Logic (For ANY section end)
     func showSectionSubmitAlert() {
-        let isLastSectionOfApp = sectionIndex == questionnaire.sections.count - 1
-        let title = isLastSectionOfApp ? "Submit Assessment?" : "Submit Section?"
-        let message = isLastSectionOfApp ? "Are you sure you want to finish the entire questionnaire?" : "Are you sure you want to submit this section and proceed?"
+        let isLast = sectionIndex == questionnaire.sections.count - 1
+        let title = isLast ? "Submit Assessment?" : "Submit Section?"
+        let alert = UIAlertController(title: title, message: "Are you sure you want to submit?", preferredStyle: .alert)
         
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-        let submitAction = UIAlertAction(title: "Submit", style: .default) { _ in
+        alert.addAction(UIAlertAction(title: "Submit", style: .default) { _ in
+            OnboardingManager.shared.markSectionCompleted(index: self.sectionIndex)
             self.proceedToNextStep()
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        
-        alert.addAction(submitAction)
-        alert.addAction(cancelAction)
-        
+        })
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         present(alert, animated: true)
     }
     
     func proceedToNextStep() {
-       
-        OnboardingManager.shared.markSectionCompleted(index: sectionIndex)
-        
-        let nextSectionIndex = sectionIndex + 1
-       
-        if nextSectionIndex < questionnaire.sections.count {
-        
-            if let introVC = storyboard?.instantiateViewController(withIdentifier: "IntroVC") as? onboardingSectionIntroViewController {
-                introVC.sectionIndex = nextSectionIndex
-                navigationController?.pushViewController(introVC, animated: true)
+        let nextIndex = sectionIndex + 1
+        if nextIndex < questionnaire.sections.count {
+            if let vc = storyboard?.instantiateViewController(withIdentifier: "IntroVC") as? onboardingSectionIntroViewController {
+                vc.sectionIndex = nextIndex
+                navigationController?.pushViewController(vc, animated: true)
             }
         } else {
-            if let analysisVC = storyboard?.instantiateViewController(withIdentifier: "analysisRIASEC") as? AnalysisTable {
-                navigationController?.pushViewController(analysisVC, animated: true)
-            } else {
-                print("Error: Could not find Analysis Page (ID: analysisRIASEC)")
+            if let vc = storyboard?.instantiateViewController(withIdentifier: "analysisRIASEC") as? AnalysisTable {
+                navigationController?.pushViewController(vc, animated: true)
             }
         }
     }
