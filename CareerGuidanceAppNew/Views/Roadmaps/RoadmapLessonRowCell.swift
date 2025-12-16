@@ -92,9 +92,9 @@ class RoadmapLessonRowCell: UITableViewCell {
         guard let lesson = lesson else { return }
 
             // temporarily darken
-            if let bg = sender.backgroundColor {
-                sender.backgroundColor = bg.darker(by: 0.15)
-            }
+//            if let bg = sender.backgroundColor {
+//                sender.backgroundColor = bg.darker(by: 0.15)
+//            }
 
             // restore after delay
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {

@@ -17,11 +17,15 @@ class TestResultsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     
+    var lesson: Lesson?
+    var result: TestResult?
+    
+    
     private let scorePercentage = 80
     var testResult: TestResult!
     override func viewDidLoad() {
         super.viewDidLoad()
-        testResult = makeTestResult(for: "UI/UX Fundamentals")
+        testResult = makeTestResult(for: lesson?.name ?? " ")
         
         resultCardView.layer.cornerRadius = 16
         resultCardView.clipsToBounds = true
@@ -60,27 +64,9 @@ class TestResultsViewController: UIViewController {
     private func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
-
-        //tableView.separatorStyle = .none
-        
-        tableView.showsVerticalScrollIndicator = false
         tableView.estimatedRowHeight = 80
-        
         tableView.isScrollEnabled = false
     }
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension TestResultsViewController: UITableViewDataSource {

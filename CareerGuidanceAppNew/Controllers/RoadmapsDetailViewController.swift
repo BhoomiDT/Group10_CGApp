@@ -18,12 +18,6 @@ class RoadmapDetailViewController: UIViewController, RoadmapLessonRowCellDelegat
             super.viewDidLoad()
             self.title = selectedRoadmap.title
             setupTableView()
-//        if let sheet = self.sheetPresentationController {
-//            sheet.presentedViewController.view.backgroundColor = .white
-//        }
-//        
-//        view.backgroundColor = .white
-        //view.backgroundColor = UIColor.white.withAlphaComponent(1.0)
         }
 
         private func setupTableView() {
@@ -57,29 +51,14 @@ class RoadmapDetailViewController: UIViewController, RoadmapLessonRowCellDelegat
                 openTest(for: lesson)
             }
         }
-//    private func openResults(for lesson: Lesson) {
-//            // Example using storyboard identifier "TestResultsViewController"
-//            // Replace with your VC class / storyboard ID
-//            let storyboard = UIStoryboard(name: "Roadmaps", bundle: nil)
-//            guard let resultsVC = storyboard.instantiateViewController(withIdentifier: "TestResultsViewController") as? SeeResultsViewController else {
-//                print("TestResultsViewController not found")
-//                return
-//            }
-//            // optionally pass data
-//            //resultsVC.result = makeTestResult(for: lesson.name)
-//            navigationController?.pushViewController(resultsVC, animated: true)
-//        }
+
     private func openResults(for lesson: Lesson) {
         let storyboard = UIStoryboard(name: "Roadmaps", bundle: nil)
-        guard let resultsVC = storyboard.instantiateViewController(withIdentifier: "TestResultsViewController") as? SeeResultsViewController else {
+        guard let resultsVC = storyboard.instantiateViewController(withIdentifier: "TestResultsViewController") as? TestResultsViewController else {
             print("TestResultsViewController not found")
             return
         }
-
-        // two valid options — either pass lesson and let results VC build result, or pass result directly
         resultsVC.lesson = lesson
-        // OR: resultsVC.result = makeTestResult(for: lesson.name)
-
         navigationController?.pushViewController(resultsVC, animated: true)
     }
     private func openTest(for lesson: Lesson) {
@@ -93,7 +72,7 @@ class RoadmapDetailViewController: UIViewController, RoadmapLessonRowCellDelegat
 
         if let sheet = modalVC.sheetPresentationController {
             let customDetent = UISheetPresentationController.Detent.custom { context in
-                return 600   // height in points (approx 3/4 screen on most iPhones)
+                return 600
             }
 
             sheet.detents = [customDetent]
