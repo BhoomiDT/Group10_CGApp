@@ -29,14 +29,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // another storyboard (e.g., "Badges", "MyJourney", etc.)
         // ---------------------------------------------------------
 
-        /*
+        
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
         let window = UIWindow(windowScene: windowScene)
 
 
         // Instantiate the initial view controller from Extra.storyboard
-        let storyboard = UIStoryboard(name: "Answers", bundle: nil) // "Extra" is the filename (case-sensitive)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil) // "Extra" is the filename (case-sensitive)
         guard let initialVC = storyboard.instantiateInitialViewController() else {
             print("⚠️ ERROR: Could not instantiate initial VC from storyboard. Check 'Is Initial View Controller'.")
             return
@@ -45,8 +45,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.rootViewController = initialVC
         self.window = window
         window.makeKeyAndVisible()
-        */
-
+        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) { }

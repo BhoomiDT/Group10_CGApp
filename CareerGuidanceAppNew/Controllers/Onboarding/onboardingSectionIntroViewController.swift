@@ -26,7 +26,31 @@ class onboardingSectionIntroViewController: UIViewController {
         configureUI()
         styleCircle()
     }
+    private var hasShownWelcomeInThisSession = false
 
+        override func viewDidAppear(_ animated: Bool) {
+            super.viewDidAppear(animated)
+
+            // If it's section 0 and we haven't shown the modal since this
+            // specific screen loaded, show it.
+            if sectionIndex == 0 && !hasShownWelcomeInThisSession {
+                showWelcomeModal()
+            }
+        }
+
+        private func showWelcomeModal() {
+            let sb = UIStoryboard(name: "WelcomePage", bundle: nil)
+            
+            if let welcomeVC = sb.instantiateViewController(withIdentifier: "WelcomePage") as? WelcomeViewController {
+                welcomeVC.modalPresentationStyle = .pageSheet
+                
+                // Set the flag to true so when the modal is dismissed,
+                // viewDidAppear doesn't run this again.
+                hasShownWelcomeInThisSession = true
+                
+                self.present(welcomeVC, animated: true)
+            }
+        }
     private func configureUI() {
         let section = questionnaire.sections[sectionIndex]
         iconImageView.image = UIImage(systemName: section.symbolName)

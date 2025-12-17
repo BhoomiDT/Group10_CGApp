@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24412" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Fce-Q1-lhY">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24405"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Welcome View Controller-->
+        <scene sceneID="nS1-7l-spp">
+            <objects>
+                <viewController storyboardIdentifier="WelcomePage" id="Fce-Q1-lhY" customClass="WelcomeViewController" customModule="CareerGuidanceAppNew" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cUq-lr-EoM">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Career Development App" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H5U-Sl-XSB">
+                                <rect key="frame" x="24" y="190" width="345" height="67"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="YlT-Sm-wk2">
+                                <rect key="frame" x="24" y="289" width="345" height="58"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Csf-TQ-tWy">
+                                        <rect key="frame" x="0.0" y="0.66666666666666785" width="50" height="56.666666666666657"/>
+                                        <color key="tintColor" red="0.1215686275" green="0.64705882349999999" blue="0.63137254899999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="jzp-U8-iag"/>
+                                        </constraints>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="w3f-IR-PdP">
+                                        <rect key="frame" x="58" y="0.0" width="287" height="58"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find Your Perfect Career Path" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dOM-KG-MM1">
+                                                <rect key="frame" x="0.0" y="0.0" width="287" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discover your strengths and get a personalized path to reach your goals." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="koX-Xi-7Tv">
+                                                <rect key="frame" x="0.0" y="24.333333333333311" width="287" height="33.666666666666657"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" systemColor="systemGrayColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="koX-Xi-7Tv" firstAttribute="leading" secondItem="w3f-IR-PdP" secondAttribute="leading" id="4Zj-3i-zhg"/>
+                                            <constraint firstAttribute="trailing" secondItem="koX-Xi-7Tv" secondAttribute="trailing" id="vST-LP-1bt"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Mm7-dF-PgI">
+                                <rect key="frame" x="24" y="379" width="345" height="80"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="brain.head.profile" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="oQj-sk-30V">
+                                        <rect key="frame" x="0.0" y="-0.6666666666666643" width="50" height="81.666666666666657"/>
+                                        <color key="tintColor" red="0.1215686275" green="0.64705882349999999" blue="0.63137254899999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="C28-ng-KE4"/>
+                                            <constraint firstAttribute="width" constant="50" id="XZB-Lo-fhd"/>
+                                        </constraints>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="YcE-Hk-VFs">
+                                        <rect key="frame" x="58" y="11" width="287" height="58"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Understand Your True Potential" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yp4-eR-VlQ">
+                                                <rect key="frame" x="0.0" y="0.0" width="287" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take smart tests to uncover your skills and growth areas." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ooi-Du-09O">
+                                                <rect key="frame" x="0.0" y="24.333333333333311" width="287" height="33.666666666666657"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" systemColor="systemGrayColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="g7F-p8-QhU">
+                                <rect key="frame" x="24" y="487" width="345" height="80"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trophy.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="9eq-U9-G34">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="80"/>
+                                        <color key="tintColor" red="0.1215686275" green="0.64705882349999999" blue="0.63137254899999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="BgG-TS-VTF"/>
+                                            <constraint firstAttribute="height" constant="80" id="Uuo-HN-3YS"/>
+                                        </constraints>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="HIN-hu-MGO">
+                                        <rect key="frame" x="66" y="11" width="279" height="58"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Compete. Learn. Excel." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJe-sc-qcU">
+                                                <rect key="frame" x="0.0" y="0.0" width="183.33333333333334" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Track progress and stay motivated with leaderboards and rewards." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nx6-fE-gsC">
+                                                <rect key="frame" x="0.0" y="24.333333333333368" width="257.66666666666669" height="33.666666666666657"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" systemColor="systemGrayColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About Translation &amp; Privacy..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahX-bD-rIc">
+                                <rect key="frame" x="107.66666666666667" y="726" width="177.66666666666663" height="15.666666666666629"/>
+                                <color key="tintColor" red="0.1215686275" green="0.64705882349999999" blue="0.63137254899999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.1215686275" green="0.64705882349999999" blue="0.63137254899999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qHI-UC-DiO">
+                                <rect key="frame" x="72" y="749.66666666666663" width="249" height="34.333333333333371"/>
+                                <color key="tintColor" red="0.1215686275" green="0.64705882349999999" blue="0.63137254899999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Continue">
+                                    <color key="baseBackgroundColor" red="0.1215686275" green="0.64705882349999999" blue="0.63137254899999995" alpha="1" colorSpace="calibratedRGB"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="continueTapped:" destination="Fce-Q1-lhY" eventType="touchUpInside" id="Bad-Nd-W3h"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="PV6-RE-a5n"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Mm7-dF-PgI" secondAttribute="trailing" constant="24" id="7sU-9l-ilG"/>
+                            <constraint firstItem="Mm7-dF-PgI" firstAttribute="leading" secondItem="cUq-lr-EoM" secondAttribute="leading" constant="24" id="9t4-TZ-EYi"/>
+                            <constraint firstItem="qHI-UC-DiO" firstAttribute="leading" secondItem="PV6-RE-a5n" secondAttribute="leading" constant="72" id="Bkz-xV-LNM"/>
+                            <constraint firstItem="ahX-bD-rIc" firstAttribute="centerX" secondItem="cUq-lr-EoM" secondAttribute="centerX" id="CR5-91-lIE"/>
+                            <constraint firstItem="Mm7-dF-PgI" firstAttribute="top" secondItem="YlT-Sm-wk2" secondAttribute="bottom" constant="32" id="DIs-UP-sFp"/>
+                            <constraint firstItem="H5U-Sl-XSB" firstAttribute="top" secondItem="PV6-RE-a5n" secondAttribute="top" constant="72" id="GE9-Wv-DgQ"/>
+                            <constraint firstItem="H5U-Sl-XSB" firstAttribute="leading" secondItem="PV6-RE-a5n" secondAttribute="leading" constant="24" id="OAg-72-sRF"/>
+                            <constraint firstItem="g7F-p8-QhU" firstAttribute="leading" secondItem="PV6-RE-a5n" secondAttribute="leading" constant="24" id="TYC-RG-gok"/>
+                            <constraint firstAttribute="trailing" secondItem="YlT-Sm-wk2" secondAttribute="trailing" constant="24" id="Vga-R8-B6x"/>
+                            <constraint firstItem="PV6-RE-a5n" firstAttribute="trailing" secondItem="H5U-Sl-XSB" secondAttribute="trailing" constant="24" id="ZSD-Kr-Kq2"/>
+                            <constraint firstItem="g7F-p8-QhU" firstAttribute="top" secondItem="Mm7-dF-PgI" secondAttribute="bottom" constant="28" id="jjI-Gs-hxt"/>
+                            <constraint firstAttribute="trailing" secondItem="g7F-p8-QhU" secondAttribute="trailing" constant="24" id="ma0-GY-Cnp"/>
+                            <constraint firstItem="PV6-RE-a5n" firstAttribute="bottom" secondItem="qHI-UC-DiO" secondAttribute="bottom" id="mtd-qu-HB1"/>
+                            <constraint firstItem="qHI-UC-DiO" firstAttribute="top" secondItem="ahX-bD-rIc" secondAttribute="bottom" constant="8" id="oPL-yX-yzd"/>
+                            <constraint firstItem="YlT-Sm-wk2" firstAttribute="leading" secondItem="PV6-RE-a5n" secondAttribute="leading" constant="24" id="sXK-99-i4G"/>
+                            <constraint firstItem="PV6-RE-a5n" firstAttribute="trailing" secondItem="qHI-UC-DiO" secondAttribute="trailing" constant="72" id="svt-uc-GSz"/>
+                            <constraint firstItem="YlT-Sm-wk2" firstAttribute="top" secondItem="H5U-Sl-XSB" secondAttribute="bottom" constant="32" id="xrz-Nr-MLY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="continueOnboarding" destination="qHI-UC-DiO" id="buk-cH-XPF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UAY-Lu-2Z5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2650" y="-506"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="SMy-Iy-hG7">
+            <objects>
+                <viewController id="sOS-05-ntH" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Jv4-5U-N81">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xb9-mD-ufp">
+                                <rect key="frame" x="143" y="659" width="75" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="by6-pZ-9Up"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G0W-mI-QfV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-410" y="-546"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="brain.head.profile" catalog="system" width="120" height="128"/>
+        <image name="map.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="trophy.fill" catalog="system" width="128" height="128"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

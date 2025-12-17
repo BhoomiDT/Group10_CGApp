@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24412" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PMh-Pl-oEq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24412" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UmW-nv-LzA">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24405"/>
@@ -129,7 +129,7 @@
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="selected_cell" id="kkI-bn-cg1" customClass="SelectedTableViewCell" customModule="CareerGuidanceAppNew" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="55.333332061767578" width="353" height="51"/>
+                                        <rect key="frame" x="20" y="38" width="353" height="51"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kkI-bn-cg1" id="KNJ-Dw-45g">
                                             <rect key="frame" x="0.0" y="0.0" width="353" height="51"/>
@@ -276,7 +276,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="0gc-nZ-cIt">
-                                <rect key="frame" x="0.0" y="172" width="393" height="536"/>
+                                <rect key="frame" x="0.0" y="224" width="393" height="484"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="sectionIndexBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
@@ -372,10 +372,10 @@
                         <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="qAL-2p-U2P" firstAttribute="trailing" secondItem="0gc-nZ-cIt" secondAttribute="trailing" id="4Cn-Tm-Z74"/>
-                            <constraint firstItem="0gc-nZ-cIt" firstAttribute="top" secondItem="qAL-2p-U2P" secondAttribute="top" id="Z77-sY-X3k"/>
                             <constraint firstItem="7nw-RC-Nyb" firstAttribute="leading" secondItem="qAL-2p-U2P" secondAttribute="leading" constant="16" id="iHu-RV-Gb5"/>
                             <constraint firstItem="0gc-nZ-cIt" firstAttribute="leading" secondItem="qAL-2p-U2P" secondAttribute="leading" id="iiN-kY-Uqr"/>
                             <constraint firstItem="7nw-RC-Nyb" firstAttribute="top" secondItem="0gc-nZ-cIt" secondAttribute="bottom" constant="8" id="opu-93-uwh"/>
+                            <constraint firstItem="0gc-nZ-cIt" firstAttribute="top" secondItem="qAL-2p-U2P" secondAttribute="top" id="qEJ-lw-60B"/>
                             <constraint firstItem="qAL-2p-U2P" firstAttribute="trailing" secondItem="7nw-RC-Nyb" secondAttribute="trailing" constant="16" id="wdc-AM-MZl"/>
                             <constraint firstItem="qAL-2p-U2P" firstAttribute="bottom" secondItem="7nw-RC-Nyb" secondAttribute="bottom" constant="12" id="xD9-wm-QZK"/>
                         </constraints>
@@ -599,8 +599,8 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IrY-BE-UP9" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uZ9-PA-TAP">
-                        <rect key="frame" x="0.0" y="118" width="393" height="54"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="uZ9-PA-TAP">
+                        <rect key="frame" x="0.0" y="118" width="393" height="106"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -617,8 +617,8 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PMh-Pl-oEq" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3QQ-qE-P2z">
-                        <rect key="frame" x="0.0" y="118" width="393" height="54"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="3QQ-qE-P2z">
+                        <rect key="frame" x="0.0" y="118" width="393" height="106"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -633,17 +633,17 @@
     </scenes>
     <resources>
         <image name="gearshape.circle.fill" catalog="system" width="128" height="123"/>
-        <image name="minus.circle.fill" catalog="system" width="128" height="123"/>
         <image name="minus.circle.fill" width="128" height="128"/>
+        <image name="minus.circle.fill" catalog="system" width="128" height="123"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.53333333333333333" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray2Color">
-            <color red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
