@@ -1,51 +1,52 @@
-//
-//  SceneDelegate.swift
-//  CareerGuidanceAppNew
-//
-//  Created by SDC-USER on 27/11/25.
-//
-
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
+    
     var window: UIWindow?
-
-    func scene(_ scene: UIScene,
-               willConnectTo session: UISceneSession,
-               options connectionOptions: UIScene.ConnectionOptions) {
-
-        // ---------------------------------------------------------
-        // DEFAULT BEHAVIOR:
-        // This will load the Main.storyboard automatically.
-        // KEEPING THIS because you want HEAD behavior.
-        // ---------------------------------------------------------
-        guard let _ = (scene as? UIWindowScene) else { return }
-
-
-        // ---------------------------------------------------------
-        // CUSTOM STORYBOARD LAUNCH (COMMENTED OUT)
-        // Uncomment this block ONLY if you want to launch
-        // another storyboard (e.g., "Badges", "MyJourney", etc.)
-        // ---------------------------------------------------------
-
+    
+    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
-
+        
+        // 1. Create the window
         let window = UIWindow(windowScene: windowScene)
-
-
-        // Instantiate the initial view controller from Extra.storyboard
-        let storyboard = UIStoryboard(name: "Main", bundle: nil) // "Extra" is the filename (case-sensitive)
-        guard let initialVC = storyboard.instantiateInitialViewController() else {
-            print("⚠️ ERROR: Could not instantiate initial VC from storyboard. Check 'Is Initial View Controller'.")
-            return
+        
+        // ⚠️ Reset for testing (Remove later)
+        OnboardingManager.shared.resetOnboarding()
+        
+        // 2. Determine Logic
+        let rootViewController: UIViewController
+        
+        if OnboardingManager.shared.isTechSkillsCompleted {
+            print("User Status: Returning User (Going to Home)")
+            let homeStoryboard = UIStoryboard(name: "HomePageProfileNew", bundle: nil)
+            guard let homeVC = homeStoryboard.instantiateInitialViewController() else { return }
+            rootViewController = homeVC
+        } else {
+            print("User Status: New User (Going to Onboarding)")
+            let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            if let startVC = mainStoryboard.instantiateViewController(withIdentifier: "introVC") as? onboardingSectionIntroViewController {
+                startVC.sectionIndex = 0
+                rootViewController = startVC
+            } else {
+                rootViewController = UIViewController()
+            }
         }
-
-        window.rootViewController = initialVC
+        
+        // 3. Setup Navigation Controller & Large Titles
+        if let navVC = rootViewController as? UINavigationController {
+            navVC.navigationBar.prefersLargeTitles = true
+            window.rootViewController = navVC
+        } else {
+            let navigationController = UINavigationController(rootViewController: rootViewController)
+            navigationController.navigationBar.prefersLargeTitles = true
+            window.rootViewController = navigationController
+        }
+        
+        // MARK: - 👇 THIS WAS MISSING
+        // 4. Attach the window to the scene and make it visible
         self.window = window
         window.makeKeyAndVisible()
-        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) { }

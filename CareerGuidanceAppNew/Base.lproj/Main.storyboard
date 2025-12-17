@@ -11,7 +11,7 @@
         <!--Onboarding Section Intro View Controller-->
         <scene sceneID="sgE-jK-7Pr">
             <objects>
-                <viewController storyboardIdentifier="IntroVC" id="zB6-hb-G8e" customClass="onboardingSectionIntroViewController" customModule="CareerGuidanceAppNew" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="introVC" id="zB6-hb-G8e" customClass="onboardingSectionIntroViewController" customModule="CareerGuidanceAppNew" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="i1z-KE-qqs">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -36,7 +36,7 @@
                                     <color key="baseBackgroundColor" red="0.1215686275" green="0.64705882349999999" blue="0.63137254899999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="continueTapped:" destination="zB6-hb-G8e" eventType="touchUpInside" id="acV-GF-BAk"/>
+                                    <action selector="continueButtonTapped:" destination="zB6-hb-G8e" eventType="touchUpInside" id="j1k-Tw-B9N"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rkr-Po-qoh">
@@ -47,7 +47,7 @@
                                     <color key="baseForegroundColor" red="0.12156862745098039" green="0.6470588235294118" blue="0.63137254901960782" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="skipTapped:" destination="zB6-hb-G8e" eventType="touchUpInside" id="aVf-vn-Ejj"/>
+                                    <action selector="skipButtonTapped:" destination="zB6-hb-G8e" eventType="touchUpInside" id="q79-4O-FE2"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3hU-AM-xhG">
@@ -101,10 +101,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="Kbe-jK-EEC"/>
                     <connections>
-                        <outlet property="continueButton" destination="McH-Un-ZQO" id="w8x-oL-PN4"/>
+                        <outlet property="btnContinue" destination="McH-Un-ZQO" id="Bwd-zj-kbH"/>
+                        <outlet property="btnSkip" destination="Rkr-Po-qoh" id="HFG-AD-arY"/>
                         <outlet property="iconBackgroundView" destination="byQ-Fm-rH0" id="8qo-03-aCU"/>
-                        <outlet property="iconImageView" destination="9kI-cQ-6S5" id="RET-oV-0vH"/>
-                        <outlet property="skipButton" destination="Rkr-Po-qoh" id="kNi-ek-AK9"/>
+                        <outlet property="imageView" destination="9kI-cQ-6S5" id="xdU-xE-aW2"/>
                         <outlet property="subtitleLabel" destination="3hU-AM-xhG" id="s8w-g0-G1r"/>
                         <outlet property="titleLabel" destination="8eG-TJ-3CQ" id="qfo-GV-nTO"/>
                     </connections>
@@ -250,7 +250,7 @@
         <!--Technical Skills-->
         <scene sceneID="OuN-Sq-YU9">
             <objects>
-                <viewController id="Gh3-KK-iRP" customClass="SkillsViewController" customModule="CareerGuidanceAppNew" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="technicalSkills" id="Gh3-KK-iRP" customClass="SkillsViewController" customModule="CareerGuidanceAppNew" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oXd-fJ-PuU">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -383,6 +383,9 @@
                     <navigationItem key="navigationItem" title="Technical Skills" id="9tl-Ew-6c3">
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="TuN-bk-8eK">
                             <color key="tintColor" red="0.1215686275" green="0.64705882349999999" blue="0.63137254899999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="continueButtonTapped:" destination="Gh3-KK-iRP" id="qDJ-gb-1C1"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -548,7 +551,7 @@
         <!--Recommended Path-->
         <scene sceneID="6dL-lM-Vd4">
             <objects>
-                <viewController id="mJL-fc-yhT" customClass="AnalysisTable" customModule="CareerGuidanceAppNew" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="path" id="mJL-fc-yhT" customClass="AnalysisTable" customModule="CareerGuidanceAppNew" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MRZ-NE-Bp3">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

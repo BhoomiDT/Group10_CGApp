@@ -19,28 +19,32 @@ struct Question {
     let options: [String]
 }
 
-let psychometricAnswers: [String] = ["Strongly Disagree","Disagree","Neutral","Agree","Strongly Agree"]
+let psychometricAnswers: [String] = ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"]
 
 class Questionnaire {
     let sections: [Section]
 
     init() {
         sections = [
-//            Section(
-//                symbolName: "terminal.fill",
-//                title: "Technical Skills",
-//                subtitle: "Add your technical skills to get a personalized roadmap",
-//                questions: [
-//                    Question(
-//                        qText: "How confident are you with core programming fundamentals?",
-//                        options: ["Beginner", "Intermediate", "Advanced", "Expert"]
-//                    ),
-//                    Question(
-//                        qText: "How often do you build side-projects or practice coding?",
-//                        options: ["Never", "Sometimes", "Regularly", "Very Often"]
-//                    )
-//                ]
-//            ),
+            // MARK: - Section 0: Intro / Roadmap (The Walking Man)
+            // Questions array is empty because this is just an introductory/start screen.
+            Section(
+                symbolName: "figure.walk", // SF Symbol for walking person
+                title: "Your Personal Roadmap",
+                subtitle: "Let's create a personalized career path tailored just for you.",
+                questions: []
+            ),
+            
+            // MARK: - Section 1: Technical Skills
+            // Questions array is empty because this launches the Custom Tech Skills UI.
+            Section(
+                symbolName: "terminal.fill",
+                title: "Technical Skills",
+                subtitle: "Add your technical skills to get a personalized roadmap",
+                questions: []
+            ),
+            
+            // MARK: - Section 2: Practical & Analytical (Psychometric)
             Section(
                 symbolName: "lightbulb.fill",
                 title: "Practical & Analytical Thinking",
@@ -56,6 +60,8 @@ class Questionnaire {
                     )
                 ]
             ),
+            
+            // MARK: - Section 3: Creative (Psychometric)
             Section(
                 symbolName: "paintpalette.fill",
                 title: "Creative & Focused Interests",
@@ -71,6 +77,8 @@ class Questionnaire {
                     )
                 ]
             ),
+            
+            // MARK: - Section 4: Business (Psychometric)
             Section(
                 symbolName: "briefcase.fill",
                 title: "Business & Organizational Skills",
@@ -84,9 +92,9 @@ class Questionnaire {
                         qText: "How comfortable are you leading a small team or group?",
                         options: psychometricAnswers
                     )
-                    
                 ]
             )
         ]
     }
 }
+

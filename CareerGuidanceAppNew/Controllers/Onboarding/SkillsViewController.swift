@@ -86,11 +86,24 @@ class SkillsViewController: UIViewController {
         view.layoutIfNeeded()
         tableView.contentInset.bottom = searchContainerView.frame.height + 12
     }
+    
 
     private func suggestionsArray() -> [String] {
         return isFiltering ? filteredSuggestions : suggestions
     }
-
+    @IBAction func continueButtonTapped(_ sender: Any) {
+        // Inside SkillsViewController.swift
+       
+            OnboardingManager.shared.saveTechSkills(self.selected)
+            
+            // After skills are saved, move to the next section intro (Section 2)
+            if let nextIntro = storyboard?.instantiateViewController(withIdentifier: "introVC") as? onboardingSectionIntroViewController {
+                nextIntro.sectionIndex = 2
+                navigationController?.pushViewController(nextIntro, animated: true)
+            }
+        
+    }
+    
     // helper to index path of a given cell's skill
     private func indexPath(forSelectedCell cell: SelectedSkillCell) -> IndexPath? {
         if let text = cell.titleLabel.text, let row = selected.firstIndex(of: text) {

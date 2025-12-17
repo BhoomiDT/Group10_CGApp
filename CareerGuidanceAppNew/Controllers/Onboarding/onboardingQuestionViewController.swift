@@ -60,41 +60,51 @@ class onboardingQuestionViewController: UIViewController {
     // MARK: - Actions
 
     @IBAction func optionTapped(_ sender: UIButton) {
-        // later: store which option was selected in a response model
+       
         print("Selected option: \(sender.currentTitle ?? "")")
     }
 
-    @IBAction func nextTapped(_ sender: UIButton) {
-        let section = questionnaire.sections[sectionIndex]
+    @IBAction func nextTapped(_ sender: UIButton)  {
+            let section = questionnaire.sections[sectionIndex]
 
-        // More questions in same section → push next QuestionVC
-        if questionIndex + 1 < section.questions.count {
-            guard let vc = storyboard?.instantiateViewController(
-                withIdentifier: "QuestionVC"
-            ) as? onboardingQuestionViewController else { return }
+            if questionIndex + 1 < section.questions.count {
+                guard let vc = storyboard?.instantiateViewController(
+                    withIdentifier: "QuestionVC"
+                ) as? onboardingQuestionViewController else { return }
 
-            vc.questionnaire = questionnaire
-            vc.sectionIndex = sectionIndex
-            vc.questionIndex = questionIndex + 1
+                vc.questionnaire = questionnaire
+                vc.sectionIndex = sectionIndex
+                vc.questionIndex = questionIndex + 1
 
-            navigationController?.pushViewController(vc, animated: true)
-            return
+                navigationController?.pushViewController(vc, animated: true)
+                return
+            }
+
+           
+            OnboardingManager.shared.markSectionCompleted(index: sectionIndex)
+
+          
+            let nextSectionIndex = sectionIndex + 1
+            
+            if nextSectionIndex < questionnaire.sections.count {
+       
+                if let introVC = storyboard?.instantiateViewController(
+                    withIdentifier: "introVC"
+                ) as? onboardingSectionIntroViewController {
+
+                    introVC.sectionIndex = nextSectionIndex
+                    navigationController?.pushViewController(introVC, animated: true)
+                }
+            } else {
+               
+                
+                if let pathVC = storyboard?.instantiateViewController(withIdentifier: "path") {
+                    navigationController?.pushViewController(pathVC, animated: true)
+                } else {
+                   
+                    print(" Error: Could not find ViewController with identifier 'path' in this storyboard")
+                    navigationController?.popToRootViewController(animated: true)
+                }
+            }
         }
-
-        // Section finished → next section intro
-        let nextSectionIndex = sectionIndex + 1
-        if nextSectionIndex < questionnaire.sections.count,
-           let introVC = storyboard?.instantiateViewController(
-                withIdentifier: "IntroVC"
-           ) as? onboardingSectionIntroViewController {
-
-            introVC.questionnaire = questionnaire
-            introVC.sectionIndex = nextSectionIndex
-
-            navigationController?.pushViewController(introVC, animated: true)
-        } else {
-            // All sections done – finish onboarding
-            navigationController?.popToRootViewController(animated: true)
-        }
-    }
 }

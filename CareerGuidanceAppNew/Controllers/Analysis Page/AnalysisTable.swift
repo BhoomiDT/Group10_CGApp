@@ -46,6 +46,14 @@ class AnalysisTable: UIViewController, UITableViewDataSource, UITableViewDelegat
         
         if section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! AnalysisTableViewCell1
+            
+                cell.onExploreTapped = { [weak self] in
+                    let storyboard = UIStoryboard(name: "HomePageProfileNew", bundle: nil)
+                    if let homeVC = storyboard.instantiateViewController(withIdentifier: "HomePageViewController") as? HomePageViewController {
+                        // Push to the home page
+                        self?.navigationController?.pushViewController(homeVC, animated: true)
+                    }
+                }
             cell.layer.cornerRadius = 16
             cell.layer.maskedCorners = [.layerMinXMinYCorner,
                                          .layerMaxXMinYCorner,
