@@ -32,7 +32,6 @@ class AnalysisTable: UIViewController, UITableViewDataSource, UITableViewDelegat
         else{return 0 }
     }
     
-    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 { return 0 }
         else { return 45 }

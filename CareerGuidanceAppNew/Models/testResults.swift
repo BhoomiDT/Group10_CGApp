@@ -20,7 +20,9 @@ struct TestResult {
     let improvements: [ImprovementItem]
     let lessonName: String
 }
-
+struct ResultItem {
+    let title: String
+}
 func makeTestResult(for lessonName: String) -> TestResult {
     return TestResult(
         score: 80, // static or computed later

@@ -16,7 +16,7 @@ class StaticRoadmapViewViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("VIEW DID LOAD WORKED")
-        loadRoadmapJSON()
+        loadRoadmapData()
         setupTable()
         setupHeader()
     }
@@ -57,22 +57,11 @@ class StaticRoadmapViewViewController: UIViewController {
         tableView.tableHeaderView = header.sizedForTableHeader()
     }
     
-    func loadRoadmapJSON() {
-        print("Entered load json")
-        guard let url = Bundle.main.url(forResource: "StaticRoadmapData", withExtension: "json") else {
-            print("ERROR: StaticRoadmapData.json not found")
-            return
-        }
+    func loadRoadmapData() {
+        guard let selectedRoadmap = staticRoadmaps.first else { return }
 
-        do {
-            let data = try Data(contentsOf: url)
-            let decoded = try JSONDecoder().decode(StaticRoadmap.self, from: data)
-            self.roadmap = decoded
-            self.milestoneList = decoded.milestones
-        } catch {
-            print("JSON Decode Error:", error)
-        }
-        print("Leaving load json")
+        self.roadmap = selectedRoadmap
+        self.milestoneList = selectedRoadmap.milestones
     }
     
     func setupTable() {
@@ -105,8 +94,8 @@ extension StaticRoadmapViewViewController: UITableViewDelegate, UITableViewDataS
             title: item.title,
             subtitle: item.subtitle,
             iconName: item.iconName,
-            iconColor: UIColor(hex: item.iconColor) ?? .label,
-            bgColor: UIColor(hex: item.iconBackgroundColor) ?? .systemGray5
+            iconColor: item.iconColor ?? .label,
+            bgColor: item.iconBackgroundColor ?? .systemGray5
         )
 
         return cell

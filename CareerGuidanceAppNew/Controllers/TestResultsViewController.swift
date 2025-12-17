@@ -18,34 +18,61 @@ class TestResultsViewController: UIViewController {
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     
     var lesson: Lesson?
-    var result: TestResult?
+    //var result: TestResult?
     
     
     private let scorePercentage = 80
     var testResult: TestResult!
     override func viewDidLoad() {
         super.viewDidLoad()
-        testResult = makeTestResult(for: lesson?.name ?? " ")
+
+        if testResult == nil && lesson?.status == .seeResults {
+            testResult = makeViewOnlyResult()
+        }
         
+
+        guard let testResult = testResult else {
+            fatalError("TestResult not available")
+        }
+
         resultCardView.layer.cornerRadius = 16
         resultCardView.clipsToBounds = true
-    
-        // Do any additional setup after loading the view.
-        setupResultCard()
+
+        setupResultCard(with: testResult)
+
         tableContainer.layer.cornerRadius = 16
         tableContainer.clipsToBounds = true
-//        tableView.layer.cornerRadius = 16
-//        tableView.clipsToBounds = true
+
         tableView.backgroundColor = .clear
         setupTableView()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-            super.viewDidAppear(animated)
-
-            // Animate ONLY after layout is complete
-            progressRingView.setProgress(CGFloat(scorePercentage) / 100)
+    @IBAction func viewYourAnswersTapped(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Answers", bundle: nil)
+        guard let resultsVC = storyboard.instantiateViewController(withIdentifier: "YourAnswersVC") as? YourAnswersViewController else {
+            print("TestResultsViewController not found")
+            return
         }
+        navigationController?.pushViewController(resultsVC, animated: true)
+    }
+    private func makeViewOnlyResult() -> TestResult {
+        return TestResult(
+            score: 80,
+            strengths: [
+                StrengthItem(title: "Conceptual understanding"),
+                StrengthItem(title: "Analytical thinking")
+            ],
+            improvements: [
+                ImprovementItem(title: "Advanced applications"),
+                ImprovementItem(title: "Time efficiency")
+            ],
+            lessonName: lesson?.name ?? ""
+        )
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        progressRingView.setProgress(CGFloat(testResult.score) / 100)
+    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -53,14 +80,11 @@ class TestResultsViewController: UIViewController {
         tableViewHeightConstraint.constant = tableView.contentSize.height
     }
     
-    private func setupResultCard() {
-        resultCardView.layer.cornerRadius = 16
-        resultCardView.clipsToBounds = true
-
+    private func setupResultCard(with testResult: TestResult) {
         percentageLabel.text = "\(testResult.score)%"
-        descriptionLabel.text = "Great work! You’ve shown strong skills in \(testResult.lessonName)"
+        descriptionLabel.text =
+            "Great work! You’ve shown strong skills in \(testResult.lessonName)"
     }
-    
     private func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
@@ -176,6 +200,7 @@ extension TestResultsViewController: UITableViewDataSource {
             return cell
         }
     }
+    
 }
 
 extension TestResultsViewController: UITableViewDelegate {

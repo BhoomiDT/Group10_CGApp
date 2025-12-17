@@ -23,7 +23,7 @@ class CircularProgressView: UIView {
         trackLayer.fillColor = UIColor.clear.cgColor
         trackLayer.lineCap = .round
         
-        let color = UIColor(hex: "1fa5a1") ?? .systemTeal
+        let color = UIColor(hex: "1fa5a1")
         progressLayer.strokeColor = color.cgColor
         progressLayer.lineWidth = 12
         progressLayer.fillColor = UIColor.clear.cgColor

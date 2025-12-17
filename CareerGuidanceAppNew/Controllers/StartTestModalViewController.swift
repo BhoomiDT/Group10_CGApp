@@ -62,8 +62,6 @@ class StartTestModalViewController: UIViewController {
     var lesson: Lesson!
     private var quiz: Quiz!
 
-    // MARK: - Lifecycle
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -94,8 +92,6 @@ class StartTestModalViewController: UIViewController {
 
         // Cancel button
         cancelButton.layer.cornerRadius = 22
-        cancelButton.backgroundColor = UIColor.systemGray5
-        cancelButton.setTitleColor(.darkGray, for: .normal)
 
         infoLabel.textColor = .gray
     }
@@ -109,8 +105,10 @@ class StartTestModalViewController: UIViewController {
     // MARK: - Load Quiz Data
 
     private func loadQuiz() {
-        quiz = TestFactory.makeQuiz(for: lesson.name)
-
+        quiz = TestFactory.makeQuiz(
+            lessonId: lesson.id,
+            lessonName: lesson.name
+        )
         // Populate all 4 rows
         durationTitleLabel.text = "Duration"
         durationSubtitleLabel.text = "\(quiz.durationMinutes) mins"
@@ -123,18 +121,6 @@ class StartTestModalViewController: UIViewController {
 
         attemptsTitleLabel.text = "Attempts Remaining"
         attemptsSubtitleLabel.text = "3 of 3"  // later dynamic
-
-        // Set icons (assuming SF Symbols for now)
-        durationIcon.image = UIImage(systemName: "timer")?.withRenderingMode(.alwaysTemplate)
-        questionsIcon.image = UIImage(systemName: "list.clipboard")?.withRenderingMode(.alwaysTemplate)
-        passingIcon.image = UIImage(systemName: "graduationcap.fill")?.withRenderingMode(.alwaysTemplate)
-        attemptsIcon.image = UIImage(systemName: "arrow.clockwise")?.withRenderingMode(.alwaysTemplate)
-
-        // tint colors
-        durationIcon.tintColor = UIColor(hex: "6F5DFF")
-        questionsIcon.tintColor = UIColor(hex: "5DBBFF")
-        passingIcon.tintColor = UIColor(hex: "51C267")
-        attemptsIcon.tintColor = UIColor(hex: "F4C542")
     }
 
     // MARK: - Actions
@@ -144,7 +130,11 @@ class StartTestModalViewController: UIViewController {
     }
 
     @IBAction func startTapped(_ sender: UIButton) {
+        print("Start button tapped")
+        print("Delegate is nil?", delegate == nil)
+
         dismiss(animated: true) {
+            print("Modal dismissed, calling delegate")
             self.delegate?.didTapStartTest(quiz: self.quiz)
         }
     }

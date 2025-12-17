@@ -21,19 +21,8 @@ class RoadmapsViewController: UIViewController {
     }
     
     private func loadRoadmapData() {
-            guard let url = Bundle.main.url(forResource: "RoadmapData", withExtension: "json") else {
-                fatalError("RoadmapData.json not found in the main bundle.")
-            }
-            
-            do {
-                let data = try Data(contentsOf: url)
-                let decoder = JSONDecoder()
-                self.roadmapsData = try decoder.decode([Roadmap].self, from: data)
-                
-            } catch {
-                print("Error loading or decoding roadmap data: \(error)")
-            }
-        }
+        self.roadmapsData = allRoadmaps
+    }
     
     private func registerRoadmapCells() {
         let nib = UINib(nibName: "RoadmapsCollectionViewCell", bundle: nil)
@@ -41,15 +30,12 @@ class RoadmapsViewController: UIViewController {
 
         collectionView.dataSource = self
         collectionView.delegate = self
-        
-        //collectionView.backgroundColor = .systemGroupedBackground
-        
         collectionView.setCollectionViewLayout(generateRoadmapLayout(), animated: false)
     }
     
     private func setupSearchBar() {
         searchBar.delegate = self
-        searchBar.placeholder = "Search for roadmaps..."
+        searchBar.placeholder = "Search for roadmaps"
         searchBar.backgroundImage = UIImage()
     }
     

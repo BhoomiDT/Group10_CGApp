@@ -54,7 +54,7 @@ class RoadmapDetailViewController: UIViewController, RoadmapLessonRowCellDelegat
 
     private func openResults(for lesson: Lesson) {
         let storyboard = UIStoryboard(name: "Roadmaps", bundle: nil)
-        guard let resultsVC = storyboard.instantiateViewController(withIdentifier: "TestResultsViewController") as? TestResultsViewController else {
+        guard let resultsVC = storyboard.instantiateViewController(withIdentifier: "TestResultsVC") as? TestResultsViewController else {
             print("TestResultsViewController not found")
             return
         }
@@ -72,20 +72,18 @@ class RoadmapDetailViewController: UIViewController, RoadmapLessonRowCellDelegat
 
         if let sheet = modalVC.sheetPresentationController {
             let customDetent = UISheetPresentationController.Detent.custom { context in
-                return 600
+                return 550
             }
 
             sheet.detents = [customDetent]
-            sheet.prefersGrabberVisible = true
+            sheet.prefersGrabberVisible = false
             sheet.preferredCornerRadius = 20
             //sheet.largestUndimmedDetentIdentifier = nil
         }
-
+        print("Delegate set:", modalVC.delegate != nil)
         present(modalVC, animated: true)
     }
     }
-
-    
 
 // MARK: - Section Headers for Module Titles
 extension RoadmapDetailViewController {
@@ -203,11 +201,18 @@ extension RoadmapDetailViewController: StartTestModalDelegate {
 
     func didTapStartTest(quiz: Quiz) {
         let sb = UIStoryboard(name: "Roadmaps", bundle: nil)
-        let quizVC = sb.instantiateViewController(
-            withIdentifier: "QuizViewController"
-        ) as! QuizViewController
 
-        quizVC.quiz = quiz   // pass quiz data
+        guard let quizVC = sb.instantiateViewController(
+            withIdentifier: "QuestionVC"
+        ) as? QuizViewController else {
+            print("QuestionVC not found")
+            return
+        }
+
+        quizVC.quiz = quiz
+        print("Entered QuizVC \(quiz.lessonName)")
+        print(quiz.questions.count)
+        
         navigationController?.pushViewController(quizVC, animated: true)
     }
 }
